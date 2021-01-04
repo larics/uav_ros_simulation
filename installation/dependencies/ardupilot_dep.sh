@@ -15,13 +15,13 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 
 echo "$0: installing Ardupilot Dependencies"
 
-pip install pymavlink mavproxy
-sudo apt install libgeographic-dev \
-  ros-melodic-mavlink\
-  ros-melodic-mavros\
-  ros-melodic-mavros-msgs\
-  ros-melodic-octomap-ros\
-  ros-melodic-joy\
+pip install wheel pymavlink mavproxy
+sudo apt-get install -y libgeographic-dev \
+  ros-$ROS_DISTRO-mavlink\
+  ros-$ROS_DISTRO-mavros\
+  ros-$ROS_DISTRO-mavros-msgs\
+  ros-$ROS_DISTRO-octomap-ros\
+  ros-$ROS_DISTRO-joy\
   python-wstool\ 
   python-catkin-tools\ 
   protobuf-compiler\ 
