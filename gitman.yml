@@ -1,0 +1,48 @@
+location: .gitman
+sources:
+- name: ardupilot_gazebo
+  type: git
+  repo: https://github.com/larics/ardupilot_gazebo
+  sparse_paths:
+  -
+  rev: larics-master
+  link: ros_packages/ardupilot_gazebo
+  scripts:
+  - git submodule update --init --recursive
+- name: ardupilot
+  type: git
+  repo: https://github.com/larics/ardupilot
+  sparse_paths:
+  -
+  rev: master
+  link: firmware/ardupilot
+  scripts:
+  - git submodule update --init --recursive
+- name: rotors_simulator
+  type: git
+  repo: https://github.com/larics/rotors_simulator
+  sparse_paths:
+  -
+  rev: larics_melodic_master
+  link: ros_packages/rotors_simulator
+  scripts:
+  - git submodule update --init --recursive
+- name: mav_comm
+  type: git
+  repo: https://github.com/larics/mav_comm
+  sparse_paths:
+  -
+  rev: larics_master
+  link: ros_packages/mav_comm
+  scripts:
+  - git submodule update --init --recursive
+- name: uav_ros_stack
+  type: git
+  repo: https://github.com/lmark1/uav_ros_stack
+  sparse_paths:
+  -
+  rev: main
+  link: ros_packages/uav_ros_stack
+  scripts:
+  - gitman install
+   
