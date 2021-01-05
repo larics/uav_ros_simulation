@@ -1,7 +1,7 @@
 # UAV ROS Simulation
 A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platforms
 
-| UAV ROS Simulation build status | N/A | N/A |
+| UAV ROS Simulation build status | [![Melodic](https://github.com/lmark1/uav_ros_simulation/workflows/Melodic/badge.svg)](https://github.com/lmark1/uav_ros_simulation/actions)  | [![Noetic](https://github.com/lmark1/uav_ros_simulation/workflows/Noetic/badge.svg)](https://github.com/lmark1/uav_ros_simulation/actions) |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 
 | ROS Package                                                                               | 18.04  | 20.04|
