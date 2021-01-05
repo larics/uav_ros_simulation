@@ -26,7 +26,6 @@ sudo apt -y install \
  ros-$ROS_DISTRO-mavros-msgs\
  ros-$ROS_DISTRO-octomap-ros\
  ros-$ROS_DISTRO-joy\
- python-catkin-tools\
  protobuf-compiler\
  libgoogle-glog-dev\
  geographiclib-doc\
