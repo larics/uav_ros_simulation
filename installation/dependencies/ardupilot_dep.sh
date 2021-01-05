@@ -15,21 +15,25 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 
 echo "$0: installing Ardupilot Dependencies"
 
-pip install wheel pymavlink mavproxy
-sudo apt-get install -y libgeographic-dev \
-  ros-$ROS_DISTRO-mavlink\
-  ros-$ROS_DISTRO-mavros\
-  ros-$ROS_DISTRO-mavros-msgs\
-  ros-$ROS_DISTRO-octomap-ros\
-  ros-$ROS_DISTRO-joy\
-  python-wstool\ 
-  python-catkin-tools\ 
-  protobuf-compiler\ 
-  libgoogle-glog-dev\
-  geographiclib-doc\
-  geographiclib-tools\
-  libgeographic17\
-  node-geographiclib
+
+pip install wheel 
+pip install --upgrade pip
+pip install pymavlink mavproxy
+sudo apt -y install \
+ libgeographic-dev\
+ ros-$ROS_DISTRO-mavlink\
+ ros-$ROS_DISTRO-mavros\
+ ros-$ROS_DISTRO-mavros-msgs\
+ ros-$ROS_DISTRO-octomap-ros\
+ ros-$ROS_DISTRO-joy\
+ python-wstool\
+ python-catkin-tools\
+ protobuf-compiler\
+ libgoogle-glog-dev\
+ geographiclib-doc\
+ geographiclib-tools\
+ libgeographic17\
+ node-geographiclib
 
 # TODO: Consider moving this to uav_ros_stack
 sudo ./opt/ros/$ROS_DISTRO/lib/mavros/install_geographiclib_datasets.sh
