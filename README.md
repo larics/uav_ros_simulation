@@ -26,3 +26,11 @@ git clone https://github.com/lmark1/uav_ros_simulation
 cd uav_ros_simulation
 ./installation/install.sh
 ```
+
+## Optional Dependencies
+
+Depending on the simulation type additional ROS packages may need to be installed.
+
+* [velodyne_simulator](https://github.com/lmark1/velodyne_simulator) - URDF description and Gazebo plugins to simulate Velodyne laser scanners
+* [gazebo_ros_magnet](https://github.com/larics/storm_gazebo_ros_magnet) - This is a Gazebo model plugin that simulates a magnetic dipole-dipole model
+* [larics_gazebo_worlds](https://github.com/larics/larics_gazebo_worlds) - This package contains various worlds used in Gazebo simulations
