@@ -56,7 +56,7 @@ bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
 # Install ardupilot
 
 bash $MY_PATH/dependencies/ardupilot_dep.sh
-bash $MY_PATH/../firmware/ardupilot/Tools/install-prereqs-ubuntu.sh
+bash $MY_PATH/../firmware/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh
 
 # Add Ardupilot exports to bashrc
 
