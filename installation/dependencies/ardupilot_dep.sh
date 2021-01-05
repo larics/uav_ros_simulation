@@ -32,7 +32,6 @@ sudo apt -y install \
  libgoogle-glog-dev\
  geographiclib-doc\
  geographiclib-tools\
- libgeographic17\
  node-geographiclib
 
 # TODO: Consider moving this to uav_ros_stack
