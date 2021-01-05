@@ -26,13 +26,18 @@ sudo apt -y install \
  ros-$ROS_DISTRO-mavros-msgs\
  ros-$ROS_DISTRO-octomap-ros\
  ros-$ROS_DISTRO-joy\
- python-wstool\
  python-catkin-tools\
  protobuf-compiler\
  libgoogle-glog-dev\
  geographiclib-doc\
  geographiclib-tools\
  node-geographiclib
+
+if [ "$distro" = "18.04" ]; then
+  sudo apt -y install \
+ python-wstool\
+ libgeographic17
+fi
 
 # TODO: Consider moving this to uav_ros_stack
 sudo ./opt/ros/$ROS_DISTRO/lib/mavros/install_geographiclib_datasets.sh
