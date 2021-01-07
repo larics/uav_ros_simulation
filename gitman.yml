@@ -78,7 +78,7 @@ sources_locked:
   repo: https://github.com/larics/rotors_simulator
   sparse_paths:
   -
-  rev: 24c0e41d8430fd99a4f73451206b44c92ec70711
+  rev: 51194094c039115d76211a9d4ed1d45e046d75b1
   link: ros_packages/rotors_simulator
   scripts:
   - git submodule update --init --recursive
