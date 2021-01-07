@@ -32,7 +32,7 @@ sources:
   repo: https://github.com/larics/rotors_simulator
   sparse_paths:
   -
-  rev: larics_melodic_master
+  rev: larics_noetic_master
   link: ros_packages/rotors_simulator
   scripts:
   - git submodule update --init --recursive
@@ -78,7 +78,7 @@ sources_locked:
   repo: https://github.com/larics/rotors_simulator
   sparse_paths:
   -
-  rev: 2c990b01ec653983531047534bfc923f2cf8974d
+  rev: c6eac5a7cff3ef575ed7e55680aa2a0883c77866
   link: ros_packages/rotors_simulator
   scripts:
   - git submodule update --init --recursive
@@ -87,7 +87,7 @@ sources_locked:
   repo: https://github.com/lmark1/uav_ros_stack
   sparse_paths:
   -
-  rev: 818f4a69e200124515231453f32665e1d29a4f91
+  rev: 1d2ab7f668f8af6ae4e0d4c057673bc74de99489
   link: ros_packages/uav_ros_stack
   scripts:
   - gitman install
