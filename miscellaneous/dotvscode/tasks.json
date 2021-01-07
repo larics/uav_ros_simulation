@@ -1,0 +1,36 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+        "label": "catkin build - RELEASE",
+        "type": "shell",
+        "command": "catkin",
+        "args": [
+            "build"
+        ],
+        "problemMatcher": {
+            "base": "$gcc",
+            "fileLocation": "absolute"
+        },
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
+    },
+    {
+        "label": "catkin clean",
+        "type": "shell",
+        "command": "catkin",
+        "args": [
+            "clean"
+        ],
+        "problemMatcher": {
+            "base": "$gcc",
+            "fileLocation": "absolute"
+        },
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        }
+    }
+}
