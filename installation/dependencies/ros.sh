@@ -36,4 +36,9 @@ if [ "$num" -lt "1" ]; then
   echo "
 source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 
+  if [ -e "$HOME/.zshrc" ]; then
+      echo "Adding 'source /opt/ros/$ROS_DISTRO/setup.bash' to your .zshrc"
+      echo "
+  source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.zshrc
+  fi
 fi
