@@ -13,6 +13,17 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 | [ardupilot](https://github.com/larics/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) |
 
 ## Installation
+
+### Beginner
+
+Follow these steps for a quick and easy start.
+
+```bash
+cd ~
+git clone https://github.com/lmark1/uav_ros_simulation
+./uav_ros_simulation/installation/install_and_setup_workspace.sh
+```
+
 ### Advanced
 
 Follow these installation steps if you have a catkin workspace already set up.
@@ -25,6 +36,20 @@ cd /path/to/catkin_ws/src
 git clone https://github.com/lmark1/uav_ros_simulation
 cd uav_ros_simulation
 ./installation/install.sh
+
+# Build catkin workspace
+catkin build
+
+# Export GAZEBO_PLUGIN_PATH
+./installation/gazebo/setup_gazebo.sh /path/to/catkin_ws/build
+```
+
+## Startup
+
+UAV simulations are launched as tmuxinator sessions as follows.
+```bash
+cd uav_ros_simulation/startup/kopterworx_flying
+./start.sh
 ```
 
 ## Optional Dependencies
