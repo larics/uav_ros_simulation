@@ -65,12 +65,20 @@ if [ "$num" -lt "1" ]; then
 
   TEMP=`( cd "$MY_PATH/../firmware/ardupilot/Tools/autotest" && pwd )`
 
-  echo "Adding source to .bashrc"
+  echo "Adding Ardupilot source to .bashrc"
   # set bashrc
   echo "
 # Ardupilot exports
 export PATH=\$PATH:$TEMP
 export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc
+
+  if [ -e "$HOME/.zshrc" ]; then
+    echo "Adding Ardupilot source to .zshrc"
+    echo "
+# Ardupilot exports
+export PATH=\$PATH:$TEMP
+export PATH=/usr/lib/ccache:\$PATH" >> ~/.zshrc
+  fi
 
 fi
 
@@ -86,6 +94,11 @@ if [ "$num" -lt "1" ]; then
   echo "
 $line" >> ~/.bashrc
 
+  if [ -e "$HOME/.zshrc" ]; then
+    echo "Adding '$line' to your .zshrc"
+    echo "
+$line" >> ~/.zshrc
+  fi
 fi
 
 ## | ------------- add Gazebo sourcing to .bashrc ------------- |
@@ -99,5 +112,11 @@ if [ "$num" -lt "1" ]; then
   # set bashrc
   echo "
 $line" >> ~/.bashrc
+
+  if [ -e "$HOME/.zshrc" ]; then
+    echo "Adding '$line' to your .zshrc"
+    echo "
+$line" >> ~/.zshrc
+  fi
 
 fi
