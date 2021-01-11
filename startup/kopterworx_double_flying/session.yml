@@ -1,0 +1,35 @@
+name: inspection
+root: ./
+startup_window: roscore
+pre_window:
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=1
+        - waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=2
+        - export UAV_NAMESPACE=red; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch
+        - export UAV_NAMESPACE=blue; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch fcu_url:="udp://:14560@localhost:14565" tgt_system:=2
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch gazebo_ros empty_world.launch
+        - export UAV_NAMESPACE=red; waitForRos; waitForSimulation; roslaunch ardupilot_gazebo spawn_kopterworx.launch x:=0 y:=0 fdm_port_in:=9002 fdm_port_out:=9003
+        - export UAV_NAMESPACE=blue; waitForRos; waitForSimulation; roslaunch ardupilot_gazebo spawn_kopterworx.launch x:=3 y:=2 fdm_port_in:=9012 fdm_port_out:=9013        
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - export UAV_NAMESPACE=red; waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - "export UAV_NAMESPACE=red; waitForRos; waitForOdometry; waitForSimulation; rosservice call /$UAV_NAMESPACE/mavros/set_mode 0 GUIDED; 
+          waitForCarrot; rostopic pub --once /$UAV_NAMESPACE/joy sensor_msgs/Joy \"buttons: [0,0,0,0,0,1]\"; 
+          rosservice call /$UAV_NAMESPACE/mavros/cmd/arming true; sleep 1; rosservice call /$UAV_NAMESPACE/takeoff 1.75"
+        - export UAV_NAMESPACE=blue; waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - "export UAV_NAMESPACE=blue; waitForRos; waitForOdometry; waitForSimulation; rosservice call /$UAV_NAMESPACE/mavros/set_mode 0 GUIDED; 
+          waitForCarrot; rostopic pub --once /$UAV_NAMESPACE/joy sensor_msgs/Joy \"buttons: [0,0,0,0,0,1]\"; 
+          rosservice call /$UAV_NAMESPACE/mavros/cmd/arming true; sleep 1; rosservice call /$UAV_NAMESPACE/takeoff 1.75"
+  - trajectory:
+      layout: tiled
+      panes:
+        - export UAV_NAMESPACE=red; waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=$(rospack find uav_ros_tracker)/config/topp_config_defaul.yaml
+        - export UAV_NAMESPACE=blue; waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=$(rospack find uav_ros_tracker)/config/topp_config_defaul.yaml
