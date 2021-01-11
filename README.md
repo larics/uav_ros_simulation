@@ -7,10 +7,11 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 | ROS Package                                                                               | 18.04  | 20.04|
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | [uav_ros_stack](https://github.com/lmark1/uav_ros_stack) | [![Melodic](https://github.com/lmark1/uav_ros_stack/workflows/Melodic/badge.svg)](https://github.com/lmark1/uav_ros_stack/actions) | [![Noetic](https://github.com/lmark1/uav_ros_stack/workflows/Noetic/badge.svg)](https://github.com/lmark1/uav_ros_stack/actions) |
-| [ardupilot_gazebo](https://github.com/larics/ardupilot_gazebo) | N/A | N/A |
+| [ardupilot_gazebo](https://github.com/larics/ardupilot_gazebo) |  [![Melodic](https://github.com/larics/ardupilot_gazebo/workflows/Melodic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) | [![Noetic](https://github.com/larics/ardupilot_gazebo/workflows/Noetic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) |
+| [ardupilot](https://github.com/larics/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) |
 | [rotors_simulator](https://github.com/larics/rotors_simulator) | N/A | N/A |
 | [mav_comm](https://github.com/larics/mav_comm) | N/A | N/A |
-| [ardupilot](https://github.com/larics/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) | [![Build Status](https://travis-ci.com/ArduPilot/ardupilot.svg?branch=master)](https://travis-ci.com/ArduPilot/ardupilot) |
+
 
 ## Installation
 
@@ -51,6 +52,8 @@ UAV simulations are launched as tmuxinator sessions as follows.
 cd uav_ros_simulation/startup/kopterworx_flying
 ./start.sh
 ```
+
+To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).
 
 ## Optional Dependencies
 
