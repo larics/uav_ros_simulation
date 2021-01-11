@@ -23,4 +23,4 @@ windows:
   - trajectory:
       layout: tiled
       panes:
-        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=$(rospack find uav_ros_tracker)/config/topp_config_defaul.yaml
+        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
