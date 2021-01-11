@@ -47,6 +47,6 @@ if [ "$distro" = "18.04" ]; then
  python-wstool\
  libgeographic17
 
-  # TODO: Consider moving this to uav_ros_stack
-  sudo ./opt/ros/$ROS_DISTRO/lib/mavros/install_geographiclib_datasets.sh
+  # TODO: This not needed
+  # sudo ./opt/ros/$ROS_DISTRO/lib/mavros/install_geographiclib_datasets.sh
 fi
