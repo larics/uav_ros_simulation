@@ -7,7 +7,7 @@ windows:
       layout: tiled
       panes:
         - roscore
-        - waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false
+        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false
         - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch 
   - gazebo:
       layout: tiled
@@ -17,9 +17,7 @@ windows:
       layout: tiled
       panes:
         - waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
-        - "waitForRos; waitForOdometry; rosservice call /$UAV_NAMESPACE/mavros/set_mode 0 GUIDED; 
-          waitForCarrot; rostopic pub --once /$UAV_NAMESPACE/joy sensor_msgs/Joy \"buttons: [0,0,0,0,0,1]\"; 
-          rosservice call /$UAV_NAMESPACE/mavros/cmd/arming true; sleep 1; rosservice call /$UAV_NAMESPACE/takeoff 1.75"
+        - rosrun ardupilot_gazebo automatic_takeoff.sh
   - trajectory:
       layout: tiled
       panes:
