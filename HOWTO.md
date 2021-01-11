@@ -5,7 +5,7 @@
 Running *start.sh* will automatically start and attach you to a tmux session, so it's useful to know tmux keybinds. 
 The standard TMUX command prefix is **Ctrl+b**.
 
-| | |
+| Description |  Keybind |
 |---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | Run tmux | :$ tmux |
 | List tmux sessions | :$ tmux ls |
