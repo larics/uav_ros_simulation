@@ -6,7 +6,7 @@ Running *start.sh* will automatically start and attach you to a tmux session, so
 The standard TMUX command prefix is **Ctrl+b**.
 
 | | |
-| :--        |         :-- |
+|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | Run tmux | :$ tmux |
 | List tmux sessions | :$ tmux ls |
 | Attach to a session | :$tmux a -t [session name] |
