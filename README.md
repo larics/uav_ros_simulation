@@ -20,9 +20,9 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 Follow these steps for a quick and easy start.
 
 ```bash
-cd ~
 git clone https://github.com/lmark1/uav_ros_simulation
-./uav_ros_simulation/installation/install_and_setup_workspace.sh
+cd uav_ros_simulation/installation
+./install_and_setup_workspace.sh
 ```
 
 ### Advanced
@@ -54,6 +54,29 @@ cd uav_ros_simulation/startup/kopterworx_flying
 ```
 
 To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).
+
+## Troubleshooting
+
+### ~/.bashrc
+
+Make sure the following lines or their equivalents are found at the end of your ~/.bashrc (or ~/.zshrc) file in any order 
+after installataion:
+```bash
+source /opt/ros/noetic/setup.bash
+source /root/uav_ws/devel/setup.bash
+source /usr/share/gazebo/setup.sh
+
+# shell configuration
+source /uav_ros_simulation/ros_packages/uav_ros_stack/miscellaneous/shell_additions/shell_scripts.sh
+
+# Ardupilot exports
+export PATH=$PATH:/root/uav_ws/src/uav_ros_simulation/firmware/ardupilot/Tools/autotest
+export PATH=/usr/lib/ccache:$PATH
+
+# ardupilot_gazebo exports
+export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:/root/uav_ws/build/ardupilot_gazebo
+```
+**NOTE**: Lines should be automatically added. If some lines are missing please report an issue and add those lines manually.
 
 ## Optional Dependencies
 
