@@ -26,6 +26,7 @@ TEST_RESULT_PATH=$(realpath /tmp/$RANDOM)
 mkdir -p $TEST_RESULT_PATH
 
 # run the test
+export UAV_NAMESPACE=red
 rostest uav_ros_tests kopterworx_base_rostest.launch -t --results-filename=uav_ros_tests.test --results-base-dir="$TEST_RESULT_PATH"
 
 # evaluate the test results
