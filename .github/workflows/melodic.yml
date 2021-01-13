@@ -45,3 +45,7 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Build
         run: ./.ci/ci_test_build.sh
+
+      # Runs a set of commands using the runners shell
+      - name: Test
+        run: ./.ci/ci_run_tests.sh
