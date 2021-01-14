@@ -24,6 +24,7 @@ git clone https://github.com/lmark1/uav_ros_simulation
 cd uav_ros_simulation/installation
 ./install_and_setup_workspace.sh
 catkin build
+source ~/.bashrc
 ```
 
 ### Advanced
@@ -44,6 +45,9 @@ catkin build
 
 # Export GAZEBO_PLUGIN_PATH
 ./installation/gazebo/setup_gazebo.sh /path/to/catkin_ws/build
+
+# Source ~/.basrhc or ~/.zshrc
+source ~/.bashrc
 ```
 
 ## Startup
