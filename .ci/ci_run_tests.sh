@@ -13,8 +13,7 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
-source /opt/ros/$ROS_DISTRO/setup.bash
-source ~/uav_ws/devel/setup.bash
+source ~/.bashrc
 
 echo "Starting running tests"
 cd ~/uav_ws
