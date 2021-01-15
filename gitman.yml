@@ -87,7 +87,7 @@ sources_locked:
   repo: https://github.com/lmark1/uav_ros_stack
   sparse_paths:
   -
-  rev: 31b3541a2bb88312caec8ba3e37eb1aa244b319e
+  rev: 6f0af74029d4f0d71b8febba6b6abb48ec60973f
   link: ros_packages/uav_ros_stack
   scripts:
   - gitman install
