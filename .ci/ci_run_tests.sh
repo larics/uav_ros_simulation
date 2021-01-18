@@ -16,7 +16,7 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 # Install again just in case
 bash $HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
-# Manually export PYTHONPATH
+# Manually export PYTHONPATH and PATH
 echo "Current PYTHONPATH=$PYTHONPATH"
 echo "Current PATH=$PATH"
 if [ "$distro" = "18.04" ]; then
@@ -32,6 +32,9 @@ elif [ "$distro" = "20.04" ]; then
 fi
 echo "Updated PATH=$PATH"
 echo "Updated PYTHONPATH=$PYTHONPATH"
+
+echo "Add $USER to dialout group"
+sudo usermod -a -G dialout $USER
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/uav_ws/devel/setup.bash
