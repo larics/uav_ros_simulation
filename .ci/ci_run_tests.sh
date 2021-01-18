@@ -18,13 +18,19 @@ bash $HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/environment_ins
 
 # Manually export PYTHONPATH
 echo "Current PYTHONPATH=$PYTHONPATH"
+echo "Current PATH=$PATH"
 if [ "$distro" = "18.04" ]; then
   export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
   export PYTHONPATH=/usr/local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
+  export PATH=$HOME/.local/lib/python2.7/site-packages/MAVProxy:$PATH
+  export PATH=/usr/local/lib/python2.7/site-packages/MAVProxy:$PATH
 elif [ "$distro" = "20.04" ]; then
   export PYTHONPATH=$HOME/.local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
   export PYTHONPATH=/usr/local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
+  export PATH=$HOME/.local/lib/python3.8/site-packages/MAVProxy:$PATH
+  export PATH=/usr/local/lib/python3.8/site-packages/MAVProxy:$PATH
 fi
+echo "Updated PATH=$PATH"
 echo "Updated PYTHONPATH=$PYTHONPATH"
 
 source /opt/ros/$ROS_DISTRO/setup.bash
