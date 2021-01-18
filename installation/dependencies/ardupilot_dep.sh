@@ -40,7 +40,8 @@ sudo apt -y install \
  libgoogle-glog-dev\
  geographiclib-doc\
  geographiclib-tools\
- node-geographiclib
+ node-geographiclib\
+ screen
 
 if [ "$distro" = "18.04" ]; then
   sudo apt -y install \
