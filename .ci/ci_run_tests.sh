@@ -13,7 +13,19 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
+# Install again just in case
 bash $HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
+
+# Manually export PYTHONPATH
+echo "Current PYTHONPATH=$PYTHONPATH"
+if [ "$distro" = "18.04" ]; then
+  export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
+  export PYTHONPATH=/usr/local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
+elif [ "$distro" = "20.04" ]; then
+  export PYTHONPATH=$HOME/.local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
+  export PYTHONPATH=/usr/local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
+fi
+echo "Updated PYTHONPATH=$PYTHONPATH"
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/uav_ws/devel/setup.bash
