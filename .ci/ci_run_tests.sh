@@ -13,6 +13,8 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
+bash $HOME/uav_ws/src/uav_ros_simulation/.gitman/firmware/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
+
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/uav_ws/devel/setup.bash
 
