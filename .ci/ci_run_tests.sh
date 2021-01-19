@@ -13,33 +13,21 @@ distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
 [ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
-# Install again just in case
-bash $HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
-
-# Manually export PYTHONPATH and PATH
-echo "Current PYTHONPATH=$PYTHONPATH"
+# Manually export PATH to find mavproxy.py
 echo "Current PATH=$PATH"
-if [ "$distro" = "18.04" ]; then
-  export PYTHONPATH=$HOME/.local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
-  export PYTHONPATH=/usr/local/lib/python2.7/site-packages/MAVProxy:$PYTHONPATH
-  export PATH=$HOME/.local/lib/python2.7/site-packages/MAVProxy:$PATH
-  export PATH=/usr/local/lib/python2.7/site-packages/MAVProxy:$PATH
-elif [ "$distro" = "20.04" ]; then
-  export PYTHONPATH=$HOME/.local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
-  export PYTHONPATH=/usr/local/lib/python3.8/site-packages/MAVProxy:$PYTHONPATH
-  export PATH=$HOME/.local/lib/python3.8/site-packages/MAVProxy:$PATH
-  export PATH=/usr/local/lib/python3.8/site-packages/MAVProxy:$PATH
-fi
+export PATH=$HOME/.local/bin:$PATH
 echo "Updated PATH=$PATH"
-echo "Updated PYTHONPATH=$PYTHONPATH"
 
+# ROS export
 source /opt/ros/$ROS_DISTRO/setup.bash
+
+# Catkin export
 source ~/uav_ws/devel/setup.bash
 
 # Add sim_vehicle.py to PATH
 export PATH=$PATH:$HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/autotest
 
-# Add libArduPilotPlugin.so to PATH
+# Add libArduPilotPlugin.so to GAZEBO_PLUGIN_PATH
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:$HOME/uav_ws/build/ardupilot_gazebo
 
 echo "Starting running tests"
