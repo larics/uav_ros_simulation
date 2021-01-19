@@ -30,6 +30,9 @@ export PATH=$PATH:$HOME/uav_ws/src/uav_ros_simulation/.gitman/ardupilot/Tools/au
 # Add libArduPilotPlugin.so to GAZEBO_PLUGIN_PATH
 export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:$HOME/uav_ws/build/ardupilot_gazebo
 
+# Manually export ccache to PATH
+export PATH="/usr/lib/ccache:$PATH"
+
 echo "Starting running tests"
 cd ~/uav_ws
 catkin build uav_ros_tests
