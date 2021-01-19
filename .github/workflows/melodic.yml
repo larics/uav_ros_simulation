@@ -32,6 +32,8 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-18.04
+    
+    container: ubuntu:bionic
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
