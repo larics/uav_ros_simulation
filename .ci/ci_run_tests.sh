@@ -33,9 +33,6 @@ fi
 echo "Updated PATH=$PATH"
 echo "Updated PYTHONPATH=$PYTHONPATH"
 
-echo "Add $USER to dialout group"
-sudo usermod -a -G dialout $USER
-
 source /opt/ros/$ROS_DISTRO/setup.bash
 source ~/uav_ws/devel/setup.bash
 

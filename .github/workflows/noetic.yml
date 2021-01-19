@@ -33,8 +33,6 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
 
-    container: lmark1/uav_ros_stack:focal
-
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
@@ -50,4 +48,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Test
-        run: ./.ci/ci_run_tests.sh
+        run: newgrp dialout && newgrp && ./.ci/ci_run_tests.sh
