@@ -19,13 +19,11 @@ if [ "$distro" = "18.04" ]; then
   #  Toppra dependencies
   pip install wheel 
   pip install --upgrade pip
-  pip install pymavlink mavproxy
 
 elif [ "$distro" = "20.04" ]; then
   sudo apt -y install python3-pip
   pip3 install wheel
   pip3 install --upgrade pip
-  pip3 install pymavlink mavproxy
 fi
 
 
