@@ -51,7 +51,7 @@ sources_locked:
   repo: https://github.com/larics/ardupilot
   sparse_paths:
   -
-  rev: a724c3c5deb759b1b00f44e3a12ad2b288d31201
+  rev: fd91cb03b48de15fe8d3e68952967322cf2fa8ac
   link: firmware/ardupilot
   scripts:
   - git submodule update --init --recursive
