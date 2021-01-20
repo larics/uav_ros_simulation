@@ -60,7 +60,7 @@ sources_locked:
   repo: https://github.com/larics/ardupilot_gazebo
   sparse_paths:
   -
-  rev: 38b2638a2353762d67fbd825e72ffceef7f6ff43
+  rev: 3ddebc3e5913ad25641a9ff1c75e5c7b691497c0
   link: ros_packages/ardupilot_gazebo
   scripts:
   - git submodule update --init --recursive
