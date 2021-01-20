@@ -33,6 +33,9 @@ export GAZEBO_PLUGIN_PATH=$GAZEBO_PLUGIN_PATH:$HOME/uav_ws/build/ardupilot_gazeb
 # Manually export ccache to PATH
 export PATH="/usr/lib/ccache:$PATH"
 
+# Add gcc from boards to PATH
+export PATH="/opt/gcc-arm-none-eabi-6-2017-q2-update/bin:$PATH"
+
 echo "Starting running tests"
 cd ~/uav_ws
 catkin build uav_ros_tests
