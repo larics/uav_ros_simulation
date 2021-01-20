@@ -21,7 +21,7 @@ jobs:
   
   cancel:
     name: Cancel Previous Runs
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
       - name: cancel running workflows
         uses: everphone-gmbh/cancel-previous-workflows@v5
@@ -29,11 +29,10 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
   # This workflow contains a single job called "build"
-  install:
+  build:
 
-    name: Install uav_ros_simulation
+    # The type of runner that the job will run on
     runs-on: ubuntu-20.04
-    needs: cancel
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -44,26 +43,9 @@ jobs:
       - name: Install
         run: ./.ci/ci_before_install.sh
 
-
-  build:
-
-    name: Build uav_ros_simulation
-    runs-on: ubuntu-20.04
-    needs: install
-
-    steps:
-
       # Runs a set of commands using the runners shell
       - name: Build
         run: ./.ci/ci_test_build.sh
-
-  test:
-
-    name: Test uav_ros_simulation
-    runs-on: ubuntu-20.04
-    needs: build
-
-    steps:
 
       # Runs a set of commands using the runners shell
       - name: Test
