@@ -23,7 +23,7 @@ The standard TMUX command prefix is **Ctrl+b**.
 
 Move UAVs by publishing on the following topic:
 ```bash
-rostopic pub /red/topp/input_pose   # Namespace prefix either red, blue or yellow
+rostopic pub /red/tracker/input_pose   # Namespace prefix either red, blue or yellow
 ```
 
 Additional useful MAVProxy commands can be found at [ardupilot_gazebo/README.md/Simulation and Mavproxy Commands](https://github.com/larics/ardupilot_gazebo/blob/larics-master/README.md#simulation-and-mavproxy-commands).

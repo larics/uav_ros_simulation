@@ -54,7 +54,7 @@ source ~/.bashrc
 
 UAV simulations are launched as tmuxinator sessions as follows.
 ```bash
-cd uav_ros_simulation/startup/kopterworx_flying
+cd uav_ros_simulation/startup/kopterworx_one_flying
 ./start.sh
 ```
 
