@@ -1,0 +1,24 @@
+name: inspection
+root: ./
+startup_window: roscore
+pre_window: export UAV_NAMESPACE=red
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false
+        - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch 
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - rosrun ardupilot_gazebo automatic_takeoff.sh
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker mpc_tracker.launch
