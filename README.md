@@ -23,7 +23,6 @@ Follow these steps for a quick and easy start.
 git clone https://github.com/lmark1/uav_ros_simulation
 cd uav_ros_simulation/installation
 ./install_and_setup_workspace.sh
-catkin build
 source ~/.bashrc
 ```
 
