@@ -1,0 +1,29 @@
+name: inspection_slam
+root: ./
+startup_window: roscore
+pre_window: export UAV_NAMESPACE=red
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false streamrate:=15
+        - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch config_file:=custom_config/apm_config.yaml
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true enable_velodyne:=true max_range:=20 world:=$(rospack find larics_gazebo_worlds)/worlds/simple_slam.world tf_prefix:="$UAV_NAMESPACE/map"
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot_carto.launch manual_takeoff:=false odometry:=/$UAV_NAMESPACE/uav/cartographer/odometry_filtered_acc
+        - waitForRos; waitForSLAM; rosrun ardupilot_gazebo automatic_takeoff.sh
+  - slam:
+      layout: tiled
+      panes: 
+        - waitForRos; waitForOdometry; rosparam set use_sim_time true; roslaunch uav_ros_general cartographer.launch simulation:=true
+        - waitForRos; waitForOdometry; roslaunch uav_ros_general velocity_estimation_acc.launch
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=custom_config/topp_config_custom.yaml
