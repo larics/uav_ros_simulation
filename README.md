@@ -89,3 +89,5 @@ Depending on the simulation type additional ROS packages may need to be installe
 * [velodyne_simulator](https://github.com/lmark1/velodyne_simulator) - URDF description and Gazebo plugins to simulate Velodyne laser scanners
 * [gazebo_ros_magnet](https://github.com/larics/storm_gazebo_ros_magnet) - This is a Gazebo model plugin that simulates a magnetic dipole-dipole model
 * [larics_gazebo_worlds](https://github.com/larics/larics_gazebo_worlds) - This package contains various worlds used in Gazebo simulations
+* [cartographer](https://github.com/larics/cartographer) - A package for real-time simultaneous localization and mapping (SLAM)
+* [cartographer_ros](https://github.com/larics/cartographer_ros) - A package for SLAM that provides Cartographer's ROS integration
