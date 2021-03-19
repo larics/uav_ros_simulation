@@ -60,7 +60,7 @@ sources_locked:
   repo: https://github.com/larics/ardupilot_gazebo
   sparse_paths:
   -
-  rev: 267a4ac921b139610f6c097680cc360a7422d68c
+  rev: d489245b88cefbbadea9ae5a493c148e074dc0d8
   link: ros_packages/ardupilot_gazebo
   scripts:
   - git submodule update --init --recursive
@@ -87,7 +87,7 @@ sources_locked:
   repo: https://github.com/lmark1/uav_ros_stack
   sparse_paths:
   -
-  rev: 71737bf3562ec9231a795db8abd241ce9549513e
+  rev: 128de8b555f52efbc28b913589d02c91c684504f
   link: ros_packages/uav_ros_stack
   scripts:
   - gitman install
