@@ -21,7 +21,8 @@ windows:
   - slam:
       layout: tiled
       panes: 
-        - waitForRos; waitForOdometry; rosparam set use_sim_time true; roslaunch uav_ros_general cartographer.launch simulation:=true
+        - waitForRos; waitForOdometry; rosparam set use_sim_time true; roslaunch uav_ros_general cartographer.launch simulation:=true configuration_directory:=$(pwd)/custom_config configuration_basename:=slam_sim.lua
+
         - waitForRos; waitForOdometry; roslaunch uav_ros_general velocity_estimation_acc.launch
   - trajectory:
       layout: tiled
