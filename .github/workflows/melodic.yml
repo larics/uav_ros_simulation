@@ -10,6 +10,7 @@ on:
     paths-ignore: 
       - '**/README.md'
       - '**/HOWTO.md'
+      - '**/DEVELOPMENT.md'
   pull_request:
     branches: [ main ]
 
