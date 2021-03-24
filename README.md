@@ -59,6 +59,10 @@ cd uav_ros_simulation/startup/kopterworx_one_flying
 
 To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).
 
+## Development
+
+Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOMPENT.md) to find out how!
+
 ## Troubleshooting
 
 ### ~/.bashrc
