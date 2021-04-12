@@ -1,4 +1,4 @@
-name: inspection
+name: triple_kopter
 root: ./
 startup_window: roscore
 pre_window:

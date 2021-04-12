@@ -1,4 +1,4 @@
-name: inspection
+name: one_kopter_mpc
 root: ./
 startup_window: roscore
 pre_window: export UAV_NAMESPACE=red
@@ -16,7 +16,7 @@ windows:
   - arm&takeof:
       layout: tiled
       panes:
-        - waitForRos; waitForOdometry; roslaunch uav_ros_control control_manager.launch manual_takeoff:=false
+        - waitForRos; waitForOdometry; roslaunch uav_ros_control control_manager.launch manual_takeoff:=true
         - rosrun ardupilot_gazebo automatic_takeoff.sh
   - trajectory:
       layout: tiled

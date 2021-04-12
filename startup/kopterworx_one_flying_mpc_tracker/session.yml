@@ -1,4 +1,4 @@
-name: inspection
+name: single_kopter_mpctracker
 root: ./
 startup_window: roscore
 pre_window: export UAV_NAMESPACE=red

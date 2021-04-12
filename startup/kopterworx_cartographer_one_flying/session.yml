@@ -1,7 +1,7 @@
-name: inspection_slam
+name: single_kopter_slam
 root: ./
 startup_window: roscore
-pre_window: export UAV_NAMESPACE=red
+pre_window: export UAV_NAMESPACE=red; source ~/carto_ws/devel/setup.zsh
 windows:
   - roscore:
       layout: tiled
