@@ -38,6 +38,9 @@ export PATH="/opt/gcc-arm-none-eabi-6-2017-q2-update/bin:$PATH"
 
 # Export master URI
 export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=localhost
+echo "ROS_MASTER_URI = $ROS_MASTER_URI"
+echo "ROS_HOSTNAME = $ROS_HOSTNAME"
 
 echo "Starting running tests"
 cd ~/uav_ws
