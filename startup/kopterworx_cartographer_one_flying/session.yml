@@ -1,7 +1,7 @@
 name: single_kopter_slam
 root: ./
 startup_window: roscore
-pre_window: export UAV_NAMESPACE=red; source ~/carto_ws/devel/setup.zsh
+pre_window: export UAV_NAMESPACE=red
 windows:
   - roscore:
       layout: tiled
