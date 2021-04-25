@@ -40,65 +40,53 @@ bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
 bash $MY_PATH/dependencies/ardupilot_dep.sh
 bash $MY_PATH/../firmware/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
+SNAME=$( echo "$SHELL" | grep -Eo '[^/]+/?$' )
+BASHRC=~/.$(echo $SNAME)rc
+
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 # Add Ardupilot exports to bashrc
 
-num=`cat ~/.bashrc | grep "/ardupilot/Tools/autotest" | wc -l`
+num=`cat $BASHRC | grep "/ardupilot/Tools/autotest" | wc -l`
 if [ "$num" -lt "1" ]; then
 
   TEMP=`( cd "$MY_PATH/../firmware/ardupilot/Tools/autotest" && pwd )`
 
-  echo "Adding Ardupilot source to .bashrc"
-  # set bashrc
-  echo "
-# Ardupilot exports
+  echo "Adding Ardupilot source to $BASHRC"
+  echo "# Ardupilot exports
 export PATH=\$PATH:$TEMP
-export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc
-
-  if [ -e "$HOME/.zshrc" ]; then
-    echo "Adding Ardupilot source to .zshrc"
-    echo "
-# Ardupilot exports
-export PATH=\$PATH:$TEMP
-export PATH=/usr/lib/ccache:\$PATH" >> ~/.zshrc
-  fi
-
+export PATH=/usr/lib/ccache:\$PATH" >> $BASHRC
 fi
 
 ## | --------------- add ROS sourcing to .bashrc -------------- |
 
-line="source /opt/ros/$ROS_DISTRO/setup.bash"
-num=`cat ~/.bashrc | grep "$line" | wc -l`
+line="source /opt/ros/$ROS_DISTRO/setup.$SNAME"
+num=`cat $BASHRC | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
 
-  echo "Adding '$line' to your .bashrc"
-
-  # set bashrc
-  echo "
-$line" >> ~/.bashrc
-
-  if [ -e "$HOME/.zshrc" ]; then
-    echo "Adding '$line' to your .zshrc"
-    echo "
-$line" >> ~/.zshrc
-  fi
+  echo "Adding '$line' to your $BASHRC"
+  echo "$line" >> $BASHRC
 fi
 
 ## | ------------- add Gazebo sourcing to .bashrc ------------- |
 
 line="source /usr/share/gazebo/setup.sh"
-num=`cat ~/.bashrc | grep "$line" | wc -l`
+num=`cat $BASHRC | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
 
-  echo "Adding '$line' to your .bashrc"
+  echo "Adding '$line' to your $BASHRC"
 
   # set bashrc
-  echo "
-$line" >> ~/.bashrc
+  echo "$line" >> $BASHRC
+fi
 
-  if [ -e "$HOME/.zshrc" ]; then
-    echo "Adding '$line' to your .zshrc"
-    echo "
-$line" >> ~/.zshrc
-  fi
 
+## | ------------- add ardupilot completion ------------- |
+line=`( cd "$MY_PATH/../firmware/ardupilot/Tools/completion" && pwd )`
+num=`cat $BASHRC | grep "$line" | wc -l`
+if [ "$num" -lt "1" ]; then
+  echo "Adding 'source $line/completion.$SNAME' to your $BASHRC"
+  echo "source $line/completion.$SNAME" >> $BASHRC
 fi
