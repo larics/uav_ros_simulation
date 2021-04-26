@@ -9,23 +9,14 @@ fi
 
 BUILD_DIR=$1
 
+SNAME=$( echo "$SHELL" | grep -Eo '[^/]+/?$' )
+BASHRC=~/.$(echo $SNAME)rc
+
 # setup Gazebo env and update package path
 line="export GAZEBO_PLUGIN_PATH=\$GAZEBO_PLUGIN_PATH:${BUILD_DIR}/ardupilot_gazebo"
-num=`cat ~/.bashrc | grep "$line" | wc -l`
+num=`cat $BASHRC | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
-
   echo "Adding '$line' to your .bashrc"
-
-  # set bashrc
-  echo "
-# ardupilot_gazebo exports
-$line" >> ~/.bashrc
-
-  if [ -e "$HOME/.zshrc" ]; then
-    echo "Adding '$line' to your .zshrc"
-    echo "
-# ardupilot_gazebo exports
-$line" >> ~/.zshrc
-  fi
-
+  echo "# ardupilot_gazebo exports
+$line" >> $BASHRC
 fi

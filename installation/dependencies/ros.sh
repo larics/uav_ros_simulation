@@ -28,17 +28,18 @@ sudo apt -y update
 
 [ "$distro" = "18.04" ] && sudo apt -y install ros-melodic-ros-base
 [ "$distro" = "20.04" ] && sudo apt -y install ros-noetic-ros-base
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
 
-num=`cat ~/.bashrc | grep "/opt/ros/$ROS_DISTRO/setup.bash" | wc -l`
+SNAME=$( echo "$SHELL" | grep -Eo '[^/]+/?$' )
+BASHRC=~/.$(echo $SNAME)rc
+
+## | --------------- add ROS sourcing to .bashrc -------------- |
+
+line="source /opt/ros/$ROS_DISTRO/setup.$SNAME"
+num=`cat $BASHRC | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
 
-  # set bashrc
-  echo "
-source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
-
-  if [ -e "$HOME/.zshrc" ]; then
-      echo "Adding 'source /opt/ros/$ROS_DISTRO/setup.bash' to your .zshrc"
-      echo "
-  source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.zshrc
-  fi
+  echo "Adding '$line' to your $BASHRC"
+  echo "$line" >> $BASHRC
 fi

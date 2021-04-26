@@ -60,16 +60,6 @@ export PATH=\$PATH:$TEMP
 export PATH=/usr/lib/ccache:\$PATH" >> $BASHRC
 fi
 
-## | --------------- add ROS sourcing to .bashrc -------------- |
-
-line="source /opt/ros/$ROS_DISTRO/setup.$SNAME"
-num=`cat $BASHRC | grep "$line" | wc -l`
-if [ "$num" -lt "1" ]; then
-
-  echo "Adding '$line' to your $BASHRC"
-  echo "$line" >> $BASHRC
-fi
-
 ## | ------------- add Gazebo sourcing to .bashrc ------------- |
 
 line="source /usr/share/gazebo/setup.sh"
