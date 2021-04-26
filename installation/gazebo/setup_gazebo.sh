@@ -4,7 +4,7 @@
 
 if [ "$#" != 1 ]; then
     echo -e "usage: ./setup_gazebo.sh /path/to/catkin_ws/build\n"
-    return 1
+    exit 1
 fi
 
 BUILD_DIR=$1
@@ -16,7 +16,7 @@ BASHRC=~/.$(echo $SNAME)rc
 line="export GAZEBO_PLUGIN_PATH=\$GAZEBO_PLUGIN_PATH:${BUILD_DIR}/ardupilot_gazebo"
 num=`cat $BASHRC | grep "$line" | wc -l`
 if [ "$num" -lt "1" ]; then
-  echo "Adding '$line' to your .bashrc"
+  echo "Adding '$line' to your $BASHRC"
   echo "# ardupilot_gazebo exports
 $line" >> $BASHRC
 fi
