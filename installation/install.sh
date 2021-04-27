@@ -82,7 +82,7 @@ if [ "$num" -lt "1" ]; then
 fi
 
 # Add mavproxy export in case we are using Ubuntu 20.04
-line="export \$PATH=\$PATH:$HOME/.local/bin"
+line="export PATH=$HOME/.local/bin:\$PATH"
 num=`cat $BASHRC | grep "$line" | wc -l`
 if [[ "$distro" = "20.04" && "$num" -lt "1" ]]
 then
