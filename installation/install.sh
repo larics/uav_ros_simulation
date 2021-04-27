@@ -80,3 +80,13 @@ if [ "$num" -lt "1" ]; then
   echo "Adding 'source $line/completion.$SNAME' to your $BASHRC"
   echo "source $line/completion.$SNAME" >> $BASHRC
 fi
+
+# Add mavproxy export in case we are using Ubuntu 20.04
+line="export \$PATH=\$PATH:$HOME/.local/bin"
+num=`cat $BASHRC | grep "$line" | wc -l`
+if [[ "$distro" = "20.04" && "$num" -lt "1" ]]
+then
+  echo "Adding $line to $BASHRC"
+  echo "$line" >> $BASHRC
+fi
+
