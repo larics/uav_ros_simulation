@@ -18,8 +18,6 @@
 # ------ uav_ros_general
 # ------ topp_ros
 
-# Exit immediatelly if a command exits with a non-zero status
-set -e
 
 # Executes a command when DEBUG signal is emitted in this script - should be after every line
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
@@ -73,9 +71,9 @@ SIM_MODULES_PATH=$(readlink -f "$MY_PATH/../../uav_ros_simulation_modules")
 STACK_MODULES_PATH=$(readlink -f "$MY_PATH/../../uav_ros_stack_modules")
 
 # Link all the modules
-ln -s $SIM_PATH $CATKIN_SRC/uav_ros_simulation
-ln -s $SIM_MODULES_PATH $CATKIN_SRC/uav_ros_simulation_modules
-ln -s $STACK_MODULES_PATH $CATKIN_SRC/uav_ros_stack_modules
+ln -s $SIM_PATH $CATKIN_SRC
+ln -s $SIM_MODULES_PATH $CATKIN_SRC
+ln -s $STACK_MODULES_PATH $CATKIN_SRC
 
 # Link the development tools
 ln -s $SIM_PATH/ros_packages/uav_ros_stack/.clang-format $CATKIN_SRC/.clang-format
