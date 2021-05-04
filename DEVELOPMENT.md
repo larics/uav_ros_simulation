@@ -38,7 +38,6 @@ ln -s $HOME/catkin_ws/src/uav_ros_simulation/ros_packages/uav_ros_stack/.clang-f
 
 5. Copy .vscode folder contents
 cp -r $HOME/catkin_ws/src/uav_ros_stack/miscellaneous/dotvscode $HOME/catkin_ws/src/.vscode
-```
 
 4. Edit include paths in [c_cpp_properties.json](miscellaneous/dotvscode/c_cpp_properties.json) and [settings.json](miscellaneous/dotvscode/settings.json).
 
