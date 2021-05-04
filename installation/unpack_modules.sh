@@ -72,8 +72,13 @@ SIM_PATH=$(readlink -f "$MY_PATH/../../uav_ros_simulation")
 SIM_MODULES_PATH=$(readlink -f "$MY_PATH/../../uav_ros_simulation_modules")
 STACK_MODULES_PATH=$(readlink -f "$MY_PATH/../../uav_ros_stack_modules")
 
+# Link all the modules
 ln -s $SIM_PATH $CATKIN_SRC/uav_ros_simulation
 ln -s $SIM_MODULES_PATH $CATKIN_SRC/uav_ros_simulation_modules
 ln -s $STACK_MODULES_PATH $CATKIN_SRC/uav_ros_stack_modules
+
+# Link the development tools
+ln -s $SIM_PATH/ros_packages/uav_ros_stack/.clang-format $CATKIN_SRC/.clang-format
+ln -s $SIM_PATH/ros_packages/uav_ros_stack/.cmake-format.yaml $CATKIN_SRC/.cmake-format.yaml
 
 cd $MY_PATH
