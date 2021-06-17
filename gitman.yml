@@ -69,7 +69,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/larics/ardupilot_gazebo
     name: ardupilot_gazebo
-    rev: ceb846c12186ef63cefab4fb6c3fe9950b475803
+    rev: 5a2acc44537fea85e32e9de5bd8ff1f4a9dde7fe
     type: git
     sparse_paths:
       -
@@ -102,7 +102,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/lmark1/uav_ros_stack
     name: uav_ros_stack
-    rev: 580d98860b5b0f3fe67891554e24d9b4f548fa06
+    rev: 2f63d9c1b66ce8d3d65de29e039829c375b008ee
     type: git
     sparse_paths:
       -

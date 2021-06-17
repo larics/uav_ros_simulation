@@ -15,7 +15,7 @@ PACKAGE_NAME=${PWD##*/}
 
 sudo apt-get -y install git
 
-./installation/install_and_setup_workspace.sh
+./installation/install_and_setup_workspace.sh $CATKIN_WORKSPACE
 
 distro=`lsb_release -r | awk '{ print $2 }'`
 [ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
