@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: Copter-4.0
+    rev: Copter-4.0-SITL
     type: git
     sparse_paths:
       -
@@ -58,7 +58,7 @@ sources:
 sources_locked:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: 8c3664dc72f6f3bb08820149ea41f6b3e9a16cbf
+    rev: 02e0295be28b4b00119d3bd908970e8b4a91555f
     type: git
     sparse_paths:
       -
