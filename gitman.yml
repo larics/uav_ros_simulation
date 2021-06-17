@@ -44,7 +44,7 @@ sources:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/lmark1/uav_ros_stack
+  - repo: https://github.com/larics/uav_ros_stack
     name: uav_ros_stack
     rev: main
     type: git
@@ -100,9 +100,9 @@ sources_locked:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/lmark1/uav_ros_stack
+  - repo: https://github.com/larics/uav_ros_stack
     name: uav_ros_stack
-    rev: 2f63d9c1b66ce8d3d65de29e039829c375b008ee
+    rev: d0c0ab9235feff0ba5d4bbb80227aae655699f1b
     type: git
     sparse_paths:
       -
