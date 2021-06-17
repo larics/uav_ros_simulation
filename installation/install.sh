@@ -72,13 +72,14 @@ if [ "$num" -lt "1" ]; then
   echo "$line" >> $BASHRC
 fi
 
-
-## | ------------- add ardupilot completion ------------- |
-line=`( cd "$MY_PATH/../firmware/ardupilot/Tools/completion" && pwd )`
-num=`cat $BASHRC | grep "$line" | wc -l`
-if [ "$num" -lt "1" ]; then
-  echo "Adding 'source $line/completion.$SNAME' to your $BASHRC"
-  echo "source $line/completion.$SNAME" >> $BASHRC
+if [ -d "$MY_PATH/../firmware/ardupilot/Tools/completion" ]; then
+  ## | ------------- add ardupilot completion ------------- |
+  line=`( cd "$MY_PATH/../firmware/ardupilot/Tools/completion" && pwd )`
+  num=`cat $BASHRC | grep "$line" | wc -l`
+  if [ "$num" -lt "1" ]; then
+    echo "Adding 'source $line/completion.$SNAME' to your $BASHRC"
+    echo "source $line/completion.$SNAME" >> $BASHRC
+  fi
 fi
 
 # Add mavproxy export in case we are using Ubuntu 20.04
