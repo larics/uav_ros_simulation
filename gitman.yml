@@ -58,7 +58,7 @@ sources:
 sources_locked:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: fd91cb03b48de15fe8d3e68952967322cf2fa8ac
+    rev: 8c3664dc72f6f3bb08820149ea41f6b3e9a16cbf
     type: git
     sparse_paths:
       -
@@ -69,7 +69,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/larics/ardupilot_gazebo
     name: ardupilot_gazebo
-    rev: d7b115bdb1a6301a11107454f1a7fd569a43035a
+    rev: eabf1213b8cae637a340ce3628f79bf102d8c2d1
     type: git
     sparse_paths:
       -
