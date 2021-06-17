@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: master
+    rev: Copter-4.0
     type: git
     sparse_paths:
       -
