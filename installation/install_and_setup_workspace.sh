@@ -32,7 +32,6 @@ ROOT_DIR=`dirname $MY_PATH`
 cd ~/uav_ws/src
 ln -s $ROOT_DIR
 source /opt/ros/$ROS_DISTRO/setup.bash
-catkin build
 
 # Setup Gazebo
 bash $MY_PATH/gazebo/setup_gazebo.sh $HOME/uav_ws/build
