@@ -21,18 +21,23 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 cd "$MY_PATH"
 
+if [ "$#" -ne 1 ]; then
+  WORKSPACE_NAME=uav_ws
+else
+  WORKSPACE_NAME=$1
+fi
+
 # Install uav_ros_simulation
 bash $MY_PATH/install.sh
 
 # Setup catkin workspace
-bash $MY_PATH/../ros_packages/uav_ros_stack/installation/workspace_setup.sh
+bash $MY_PATH/../ros_packages/uav_ros_stack/installation/workspace_setup.sh $WORKSPACE_NAME
 
 # Build catkin workspace
 ROOT_DIR=`dirname $MY_PATH`
-cd ~/uav_ws/src
+cd ~/$WORKSPACE_NAME/src
 ln -s $ROOT_DIR
 source /opt/ros/$ROS_DISTRO/setup.bash
-catkin build
 
 # Setup Gazebo
-bash $MY_PATH/gazebo/setup_gazebo.sh $HOME/uav_ws/build
+bash $MY_PATH/gazebo/setup_gazebo.sh $HOME/$WORKSPACE_NAME/build

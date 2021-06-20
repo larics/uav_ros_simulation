@@ -2,7 +2,7 @@ location: .gitman
 sources:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: master
+    rev: Copter-4.0-SITL
     type: git
     sparse_paths:
       -
@@ -44,7 +44,7 @@ sources:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/lmark1/uav_ros_stack
+  - repo: https://github.com/larics/uav_ros_stack
     name: uav_ros_stack
     rev: main
     type: git
@@ -58,7 +58,7 @@ sources:
 sources_locked:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: fd91cb03b48de15fe8d3e68952967322cf2fa8ac
+    rev: 4de142fc584fca4a30cd7b430727b8bb3783951f
     type: git
     sparse_paths:
       -
@@ -69,7 +69,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/larics/ardupilot_gazebo
     name: ardupilot_gazebo
-    rev: d7b115bdb1a6301a11107454f1a7fd569a43035a
+    rev: 5a2acc44537fea85e32e9de5bd8ff1f4a9dde7fe
     type: git
     sparse_paths:
       -
@@ -100,9 +100,9 @@ sources_locked:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/lmark1/uav_ros_stack
+  - repo: https://github.com/larics/uav_ros_stack
     name: uav_ros_stack
-    rev: 43a2fb9711b4e60c26c720f594c3b0d9ac9e94f6
+    rev: d0c0ab9235feff0ba5d4bbb80227aae655699f1b
     type: git
     sparse_paths:
       -
