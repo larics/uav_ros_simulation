@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:focal
 
 # Use ARG - persists only during docker build
 # https://github.com/moby/moby/issues/4032#issuecomment-192327844
@@ -17,10 +17,8 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
     apt-utils \
     dialog \
     tzdata \
-    python \
-    python-pip \ 
-    python3-pip && \
-    dpkg-reconfigure --frontend noninteractive tzdata
+    keyboard-configuration && \
+    dpkg-reconfigure --frontend noninteractive tzdata && \
 
 # Install uav_ros_simulation and setup catkin workspace
 WORKDIR $HOME
