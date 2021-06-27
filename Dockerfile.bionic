@@ -1,0 +1,37 @@
+FROM ubuntu:bionic
+
+# Use ARG - persists only during docker build
+# https://github.com/moby/moby/issues/4032#issuecomment-192327844
+ARG CATKIN_WORKSPACE=uav_ws
+ARG DEBIAN_FRONTEND=noninteractive
+ARG HOME=/root
+ARG USER=root
+
+# Install all the things to stop docker build from breaking
+RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
+    apt-get update && apt-get install -q -y \
+    git \
+    sudo \
+    lsb-release \
+    gnupg2 \
+    apt-utils \
+    dialog \
+    tzdata \
+    python \
+    python-pip \ 
+    python3-pip && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+WORKDIR $HOME
+RUN git clone https://github.com/larics/uav_ros_simulation.git
+RUN ./uav_ros_simulation/installation/install_and_setup_workspace.sh $CATKIN_WORKSPACE
+
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
+RUN catkin build --limit-status-rate 0.2
+
+WORKDIR $HOME/uav_ros_simulation/firmware/ardupilot
+RUN modules/waf/waf-light configure --board sitl
+RUN modules/waf/waf-light build --target bin/arducopter
+
+RUN echo "export PATH=\$HOME/.local/bin:\$PATH" >> $HOME/.bashrc
+WORKDIR $HOME/uav_ros_simulation/startup
