@@ -1,12 +1,12 @@
 # UAV ROS Simulation
 A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platforms
 
-| UAV ROS Simulation build status | [![Melodic](https://github.com/lmark1/uav_ros_simulation/workflows/Melodic/badge.svg)](https://github.com/lmark1/uav_ros_simulation/actions)  | [![Noetic](https://github.com/lmark1/uav_ros_simulation/workflows/Noetic/badge.svg)](https://github.com/lmark1/uav_ros_simulation/actions) |
+| UAV ROS Simulation build status | [![Melodic](https://github.com/larics/uav_ros_simulation/workflows/Melodic/badge.svg)](https://github.com/larics/uav_ros_simulation/actions)  | [![Noetic](https://github.com/larics/uav_ros_simulation/workflows/Noetic/badge.svg)](https://github.com/larics/uav_ros_simulation/actions) |
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 
 | ROS Package                                                                               | 18.04  | 20.04|
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [uav_ros_stack](https://github.com/lmark1/uav_ros_stack) | [![Melodic](https://github.com/lmark1/uav_ros_stack/workflows/Melodic/badge.svg)](https://github.com/lmark1/uav_ros_stack/actions) | [![Noetic](https://github.com/lmark1/uav_ros_stack/workflows/Noetic/badge.svg)](https://github.com/lmark1/uav_ros_stack/actions) |
+| [uav_ros_stack](https://github.com/larics/uav_ros_stack) | [![Melodic](https://github.com/larics/uav_ros_stack/workflows/Melodic/badge.svg)](https://github.com/larics/uav_ros_stack/actions) | [![Noetic](https://github.com/larics/uav_ros_stack/workflows/Noetic/badge.svg)](https://github.com/larics/uav_ros_stack/actions) |
 | [ardupilot_gazebo](https://github.com/larics/ardupilot_gazebo) |  [![Melodic](https://github.com/larics/ardupilot_gazebo/workflows/Melodic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) | [![Noetic](https://github.com/larics/ardupilot_gazebo/workflows/Noetic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) |
 | [ardupilot](https://github.com/larics/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) |
 | [rotors_simulator](https://github.com/larics/rotors_simulator) | N/A | N/A |
@@ -20,7 +20,7 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 Follow these steps for a quick and easy start.
 
 ```bash
-git clone https://github.com/lmark1/uav_ros_simulation
+git clone https://github.com/larics/uav_ros_simulation
 cd uav_ros_simulation/installation
 ./install_and_setup_workspace.sh
 source ~/.bashrc
@@ -35,7 +35,7 @@ Follow these installation steps if you have a catkin workspace already set up.
 cd /path/to/catkin_ws/src
 
 # Install uav_ros_stack
-git clone https://github.com/lmark1/uav_ros_simulation
+git clone https://github.com/larics/uav_ros_simulation
 cd uav_ros_simulation
 ./installation/install.sh
 
@@ -62,6 +62,10 @@ To find out more about navigating the simulation environment please read [HOWTO.
 ## Development
 
 Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOMPENT.md) to find out how!
+
+## Docker
+Find information about running Dockerfiles at [uav_ros_stack - README.md](https://github.com/larics/uav_ros_stack#docker).  
+Prebuilt images found at [DockerHub lmark1/uav_ros_simulation](https://hub.docker.com/repository/docker/lmark1/uav_ros_simulation).
 
 ## Troubleshooting
 
