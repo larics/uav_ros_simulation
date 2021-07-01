@@ -69,6 +69,15 @@ Prebuilt images found at [DockerHub lmark1/uav_ros_simulation](https://hub.docke
 
 ## Troubleshooting
 
+### Getting new changes from Github
+
+If you want to update *uav_ros_simulation* and all its dependencies please run the following commands:
+```bash
+git pull
+gitman update --skip-changes
+catkin build
+```
+
 ### ~/.bashrc
 
 Make sure the following lines or their equivalents are found at the end of your ~/.bashrc (or ~/.zshrc) file in any order 
