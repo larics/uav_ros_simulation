@@ -18,7 +18,7 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
     dialog \
     tzdata \
     keyboard-configuration && \
-    dpkg-reconfigure --frontend noninteractive tzdata && \
+    dpkg-reconfigure --frontend noninteractive tzdata 
 
 # Install uav_ros_simulation and setup catkin workspace
 WORKDIR $HOME
@@ -30,6 +30,7 @@ WORKDIR $HOME/$CATKIN_WORKSPACE/src
 RUN catkin build --limit-status-rate 0.2
 
 # Build ardupilot binaries
+RUN sudo ln -sf /usr/bin/python3 /usr/bin/python
 WORKDIR $HOME/uav_ros_simulation/firmware/ardupilot
 RUN modules/waf/waf-light configure --board sitl
 RUN modules/waf/waf-light build --target bin/arducopter
