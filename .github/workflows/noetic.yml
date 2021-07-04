@@ -59,7 +59,8 @@ jobs:
       - name: Test
         run: ./.ci/ci_run_tests.sh
 
-    deploy:
+  deploy:
+  
     # The type of runner that the job will run on
     runs-on: ubuntu-20.04
     needs: build
