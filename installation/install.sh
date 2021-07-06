@@ -15,6 +15,29 @@ sudo apt-get -y install git
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
+# Check if rotors-gazebo is already installed via apt
+sudo apt-get -y install dpkg
+PACKAGE=ros-$ROS_DISTRO-rotors-gazebo
+num=`dpkg --list | grep $PACKAGE | wc -l`
+if [ "$num" -gt "0" ]; then
+  echo -e "\e[1;33m WARNING: You already have $PACKAGE installed with apt. \
+Please uninstall it by running sudo apt-get purge $PACKAGE. The uav_ros_simulation \
+would like to build it from source at \
+https://github.com/larics/rotors_simulator/tree/larics_master. \e0"
+  exit 2
+fi
+
+# Check if mav-msgs is already installed via apt
+PACKAGE=ros-$ROS_DISTRO-mav-msgs
+num=`dpkg --list | grep $PACKAGE | wc -l`
+if [ "$num" -gt "0" ]; then
+  echo -e "\e[1;33m WARNING: You already have $PACKAGE installed with apt. \
+Please uninstall it by running sudo apt-get purge $PACKAGE. The uav_ros_simulation \
+would like to build it from source at \
+https://github.com/larics/rotors_simulator/tree/larics_master. \e0"
+  exit 2
+fi
+
 ## | --------- change to the directory of this script --------- |
 
 cd "$MY_PATH"
