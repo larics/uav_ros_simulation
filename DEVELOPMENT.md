@@ -72,3 +72,10 @@ git push origin main
 ```
 
 Same idea works for uav_ros_simulation modules, but only one gitman.yml update is needed.
+
+## Starting out
+
+* Learn tmux keybinds by heart! Start from [HOWTO.md](https://github.com/larics/uav_ros_simulation/blob/main/HOWTO.md).
+* If you just want to see the UAV fly go to the [startup](https://github.com/larics/uav_ros_simulation/tree/main/startup) folder and execute the ```./start``` script.
+* If you have a specific use case you want to try out, copy one startup folder e.g. ```kopterworx_one_flying``` to your project and add additional nodes or programs in the ```session.yml```.
+* Check out optional dependancies for [simulation](https://github.com/larics/uav_ros_simulation#optional-dependencies) and [real-world](https://github.com/larics/uav_ros_general/#optional-dependancies).
