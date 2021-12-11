@@ -93,7 +93,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/larics/rotors_simulator
     name: rotors_simulator
-    rev: 51194094c039115d76211a9d4ed1d45e046d75b1
+    rev: e683629c575c05530dc8cccc0151215f1c018154
     type: git
     sparse_paths:
       -
