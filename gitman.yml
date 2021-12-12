@@ -71,7 +71,7 @@ sources_locked:
       - rm -rf build
   - repo: https://github.com/larics/ardupilot_gazebo
     name: ardupilot_gazebo
-    rev: 5a2acc44537fea85e32e9de5bd8ff1f4a9dde7fe
+    rev: c2a5439522337971c9986885c315c3df3430c4ff
     type: git
     sparse_paths:
       -
