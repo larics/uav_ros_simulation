@@ -61,7 +61,7 @@ To find out more about navigating the simulation environment please read [HOWTO.
 
 ## Flight Stack Development
 
-Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOMPENT.md) to find out how!
+Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOPMENT.md) to find out how!
 
 ## Fly with Docker
 
