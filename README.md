@@ -49,7 +49,7 @@ catkin build
 source ~/.bashrc
 ```
 
-## Startup
+## Simulation Startup
 
 UAV simulations are launched as tmuxinator sessions as follows.
 ```bash
@@ -59,13 +59,23 @@ cd uav_ros_simulation/startup/kopterworx_one_flying
 
 To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).
 
-## Development
+## Flight Stack Development
 
 Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOMPENT.md) to find out how!
 
-## Docker
-Find information about running Dockerfiles at [uav_ros_stack - README.md](https://github.com/larics/uav_ros_stack#docker).  
-Prebuilt images found at [DockerHub lmark1/uav_ros_simulation](https://hub.docker.com/repository/docker/lmark1/uav_ros_simulation).
+## Fly with Docker
+
+Try out a Docker image with the following commands:
+```bash
+# Install Docker
+./installation/dependencies/docker.sh
+
+# Run the newest uav_ros_simulation Noetic image
+./run_docker.sh
+```
+
+Find out how to work in a Docker environment at [HOWTO.md - Docker Commands](HOWTO.md).
+Prebuilt images for ```uav_ros_simulation``` found at [DockerHub lmark1/uav_ros_simulation](https://hub.docker.com/repository/docker/lmark1/uav_ros_simulation).
 
 ## Troubleshooting
 
