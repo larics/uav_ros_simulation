@@ -9,7 +9,16 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # Executes a command when ERR signal is emmitted in this script
 trap 'echo "$0: \"${last_command}\" command failed with exit code $?"' ERR
 
+distro=`lsb_release -r | awk '{ print $2 }'`
+[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
+[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
+
 sudo apt-get -y install git
+
+# Python fix
+if [ "$distro" = "20.04" ]; then
+  sudo ln -sf /usr/bin/python3 /usr/bin/python
+fi
 
 # get the path to this script
 MY_PATH=`dirname "$0"`
