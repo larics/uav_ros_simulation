@@ -1,4 +1,4 @@
-FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
+FROM ubuntu:focal
 
 # Use ARG - persists only during docker build
 # https://github.com/moby/moby/issues/4032#issuecomment-192327844
@@ -17,6 +17,7 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
     apt-utils \
     dialog \
     tzdata \
+    curl \
     keyboard-configuration && \
     dpkg-reconfigure --frontend noninteractive tzdata 
 
@@ -37,4 +38,4 @@ RUN modules/waf/waf-light build --target bin/arducopter
 
 # Prepare for startup
 RUN echo "export PATH=\$HOME/.local/bin:\$PATH" >> $HOME/.bashrc
-WORKDIR $HOME/uav_ros_simulation/startup
+WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying

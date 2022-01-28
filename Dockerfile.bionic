@@ -19,6 +19,7 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
     tzdata \
     python \
     python-pip \ 
+    curl \
     python3-pip && \
     dpkg-reconfigure --frontend noninteractive tzdata
 
@@ -38,4 +39,4 @@ RUN modules/waf/waf-light build --target bin/arducopter
 
 # Prepare for startup
 RUN echo "export PATH=\$HOME/.local/bin:\$PATH" >> $HOME/.bashrc
-WORKDIR $HOME/uav_ros_simulation/startup
+WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying
