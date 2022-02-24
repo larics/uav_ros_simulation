@@ -59,7 +59,7 @@ sources:
 sources_locked:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: 4de142fc584fca4a30cd7b430727b8bb3783951f
+    rev: e55a90b51b305448de65ddee15707c4be7b36e87
     type: git
     sparse_paths:
       -
