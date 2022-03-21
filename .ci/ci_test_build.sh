@@ -13,7 +13,7 @@ catkin build
 echo "Ended catkin test build"
 
 echo "Starting arducopter build"
-cd ~/$CATKIN_WORKSPACE/src/uav_ros_simulation/.gitman/ardupilot
+cd ~/$CATKIN_WORKSPACE/src/uav_ros_simulation/firmware/ardupilot
 export PATH="/usr/lib/ccache:$PATH"
 export PATH="/opt/gcc-arm-none-eabi-6-2017-q2-update/bin:$PATH"
 modules/waf/waf-light configure --board sitl                    
