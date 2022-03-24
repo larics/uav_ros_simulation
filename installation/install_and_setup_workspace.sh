@@ -41,7 +41,3 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 
 # Setup Gazebo
 bash $MY_PATH/gazebo/setup_gazebo.sh $HOME/$WORKSPACE_NAME/build
-
-## | ------------- Build catkin workspace ------------- |
-cd $MY_PATH
-catkin build
