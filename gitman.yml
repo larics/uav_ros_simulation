@@ -104,7 +104,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: https://github.com/larics/uav_ros_stack
     name: uav_ros_stack
-    rev: 8050a1a56733354d27efaf0c208cb545bf0db705
+    rev: c57008b0893bf21b47b97cddb58029c5043a04b0
     type: git
     sparse_paths:
       -
