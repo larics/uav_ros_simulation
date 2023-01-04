@@ -32,6 +32,6 @@ windows:
   - trajectory:
       layout: tiled
       panes:
-        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
-        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
-        - export UAV_NAMESPACE=yellow; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
+        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
+        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
+        - export UAV_NAMESPACE=yellow; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch

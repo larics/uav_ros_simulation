@@ -24,4 +24,4 @@ windows:
   - trajectory:
       layout: tiled
       panes:
-        - waitForRos; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
+        - waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
