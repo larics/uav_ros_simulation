@@ -7,9 +7,9 @@ windows:
       layout: tiled
       panes:
         - roscore
-        - sleep 1; export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=1
-        - sleep 2; export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot2"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=2
-        - sleep 3; export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot3"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=3
+        - sleep 1; export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=1
+        - sleep 2; export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot2"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=2
+        - sleep 3; export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot3"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=3
         - export UAV_NAMESPACE=red; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch
         - export UAV_NAMESPACE=blue; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch fcu_url:="udp://:14560@localhost:14565" tgt_system:=2
         - export UAV_NAMESPACE=yellow; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch fcu_url:="udp://:14570@localhost:14575" tgt_system:=3
@@ -23,11 +23,11 @@ windows:
   - arm&takeof:
       layout: tiled
       panes:
-        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_control pid_carrot.launch
         - export UAV_NAMESPACE=red; rosrun ardupilot_gazebo automatic_takeoff.sh 1.25
-        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_control pid_carrot.launch
         - export UAV_NAMESPACE=blue; rosrun ardupilot_gazebo automatic_takeoff.sh 2
-        - export UAV_NAMESPACE=yellow; waitForRos; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - export UAV_NAMESPACE=yellow; waitForRos; roslaunch uav_ros_control pid_carrot.launch
         - export UAV_NAMESPACE=yellow; rosrun ardupilot_gazebo automatic_takeoff.sh 3.25
   - trajectory:
       layout: tiled
