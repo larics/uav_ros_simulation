@@ -7,18 +7,24 @@ windows:
       layout: tiled
       panes:
         - roscore
-        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false
+        # GPS_TYPEX=0 in parameters to disable GPS!
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n :ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch
+          enable_console:=false 
+          parm_file:=$(rospack find ardupilot_gazebo)/config/kopterworx_v432.params
+          name:=kopter41
         - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch 
   - gazebo:
       layout: tiled
       panes:
-        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true
+        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch 
+          use_sim_time:=true
   - arm&takeof:
       layout: tiled
       panes:
-        - waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
-        - rosrun ardupilot_gazebo automatic_takeoff.sh
+        - waitForRos; roslaunch uav_ros_control control_manager_nodelet.launch
+          odometry_in:=/$UAV_NAMESPACE/odometry
+        - waitForRos; waitForSysStatus; rosrun ardupilot_gazebo automatic_takeoff.sh 2 /$UAV_NAMESPACE/odometry
   - trajectory:
       layout: tiled
       panes:
-        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker mpc_tracker.launch
+        - waitForRos; roslaunch uav_ros_tracker mpc_tracker.launch
