@@ -1,0 +1,64 @@
+name: single_kopter
+root: ./
+startup_window: roscore
+pre_window: export UAV_NAMESPACE=red
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot1"; waitForRos; 
+          roslaunch ardupilot_gazebo sim_vehicle.launch 
+          enable_console:=false
+          additional_arguments:="--no-rebuild"
+        - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch 
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true remap_gazebo_tf:=true
+        - waitForRos; waitForSimulation; roslaunch larics_gazebo_worlds landing_platform.launch
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_control pid_carrot.launch
+          #msf_callback_enable:=true
+        - rosrun ardupilot_gazebo automatic_takeoff.sh
+        - waitForRos; roslaunch uav_ros_control uav_manager.launch 2> >(grep -v TF_REPEATED_DATA buffer_core)
+        - waitForRos; roslaunch uav_ros_control target_position_client.launch
+        - |
+          uav_ws
+          history -s "rostopic pub /$UAV_NAMESPACE/ready_to_start"
+        - |
+          uav_ws
+          history -s "rostopic echo /$UAV_NAMESPACE/outer_tag/"
+  - go_to:
+      layout: tiled
+      panes:
+        - |
+          uav_ws
+          waitForRos
+          rostopic echo /$UAV_NAMESPACE/carrot/pose
+        - |
+          uav_ws
+          waitForRos
+          rostopic echo /$UAV_NAMESPACE/tracker/input_pose
+        - |
+          uav_ws
+          history -s "rosservice call /$UAV_NAMESPACE/position_hold"
+        - |
+          uav_ws
+          history -s "rostopic pub /$UAV_NAMESPACE/tracker/input_pose"
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_tracker mpc_tracker.launch
+  - ar_tag:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch ar_track_alvar ar_tag_detection.launch namespace:=$UAV_NAMESPACE/outer_tag cam_image_topic:=/$UAV_NAMESPACE/camera/color/image_raw cam_info_topic:=/$UAV_NAMESPACE/camera/color/camera_info output_frame:=$UAV_NAMESPACE/base_link marker_size:=300.0
+        - waitForRos; rostopic echo /$UAV_NAMESPACE/outer_tag/ar_pose_marker 
+        - waitForRos; waitForOdometry; roslaunch ar_track_alvar ar_tag_detection.launch namespace:=$UAV_NAMESPACE/inner_tag cam_image_topic:=/red/camera/color/image_raw cam_info_topic:=/$UAV_NAMESPACE/camera/color/camera_info output_frame:=$UAV_NAMESPACE/base_link marker_size:=25
+  - tf:
+      layout: tiled
+      panes: 
+        - waitForRos; waitForOdometry; roslaunch uav_ros_control world_to_base_link.launch
