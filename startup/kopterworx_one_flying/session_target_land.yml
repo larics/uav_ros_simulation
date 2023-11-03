@@ -23,6 +23,9 @@ windows:
         - waitForRos; roslaunch uav_ros_control pid_carrot.launch
           #msf_callback_enable:=true
         - rosrun ardupilot_gazebo automatic_takeoff.sh
+  - land:
+      layout: tiled
+      panes:
         - waitForRos; roslaunch uav_ros_control uav_manager.launch 2> >(grep -v TF_REPEATED_DATA buffer_core)
         - waitForRos; roslaunch uav_ros_control target_position_client.launch
         - |
