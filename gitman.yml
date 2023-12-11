@@ -2,11 +2,11 @@ location: .gitman
 sources:
   - repo: https://github.com/larics/ardupilot
     name: ardupilot
-    rev: Copter-4.1.0-Compassless
+    rev: Copter-Larics-4.3
     type: git
+    params:
     sparse_paths:
       -
-    link: firmware/ardupilot
     links:
       -
     scripts:
@@ -16,9 +16,9 @@ sources:
     name: ardupilot_gazebo
     rev: larics-master
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/ardupilot_gazebo
     links:
       -
     scripts:
@@ -27,9 +27,9 @@ sources:
     name: mav_comm
     rev: larics_master
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/mav_comm
     links:
       -
     scripts:
@@ -38,9 +38,9 @@ sources:
     name: rotors_simulator
     rev: larics_noetic_master
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/rotors_simulator
     links:
       -
     scripts:
@@ -49,9 +49,9 @@ sources:
     name: uav_ros_stack
     rev: main
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/uav_ros_stack
     links:
       -
     scripts:
@@ -61,9 +61,9 @@ sources_locked:
     name: ardupilot
     rev: 049074440866055912ca4d6b575eb482b2021b8b
     type: git
+    params:
     sparse_paths:
       -
-    link: firmware/ardupilot
     links:
       -
     scripts:
@@ -73,9 +73,9 @@ sources_locked:
     name: ardupilot_gazebo
     rev: 676dae07131cf9d1a066ee4e23eb20e72e091325
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/ardupilot_gazebo
     links:
       -
     scripts:
@@ -84,9 +84,9 @@ sources_locked:
     name: mav_comm
     rev: 260be9430423e8655473b419606f58d887059d8d
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/mav_comm
     links:
       -
     scripts:
@@ -95,9 +95,9 @@ sources_locked:
     name: rotors_simulator
     rev: e683629c575c05530dc8cccc0151215f1c018154
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/rotors_simulator
     links:
       -
     scripts:
@@ -106,9 +106,9 @@ sources_locked:
     name: uav_ros_stack
     rev: 579ee5f0743f4c85ae29379363879f9514d5cf43
     type: git
+    params:
     sparse_paths:
       -
-    link: ros_packages/uav_ros_stack
     links:
       -
     scripts:
