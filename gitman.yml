@@ -142,4 +142,3 @@ groups:
       - rotors_simulator
       - ardupilot_gazebo
       - mav_comm
-default_group: ''
