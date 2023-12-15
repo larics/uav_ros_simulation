@@ -8,7 +8,8 @@ sources:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: firmware/ardupilot
     scripts:
       - git submodule update --init --recursive
       - rm -rf build
@@ -20,7 +21,8 @@ sources:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/ardupilot_gazebo
     scripts:
       - git submodule update --init --recursive
   - repo: git@github.com:larics/mav_comm
@@ -31,7 +33,8 @@ sources:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/mav_comm
     scripts:
       - git submodule update --init --recursive
   - repo: git@github.com:larics/rotors_simulator
@@ -42,7 +45,8 @@ sources:
     sparse_paths:
       -
     links:
-      -
+      - source: ''
+        target: ros_packages/rotors_simulator
     scripts:
       - git submodule update --init --recursive
   - repo: git@github.com:larics/uav_ros_stack
@@ -53,7 +57,20 @@ sources:
     sparse_paths:
       -
     links:
+      - source: ''
+        target: ros_packages/uav_ros_stack
+    scripts:
+      - gitman install
+  - repo: git@github.com:larics/larics_gazebo_worlds.git
+    name: larics_gazebo_worlds
+    rev: master
+    type: git
+    params:
+    sparse_paths:
       -
+    links:
+      - source: ''
+        target: ros_packages/larics_gazebo_worlds
     scripts:
       - gitman install
 sources_locked:
