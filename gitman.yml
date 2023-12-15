@@ -131,5 +131,14 @@ sources_locked:
     scripts:
       - gitman install
 groups:
-  -
-default_group: ''
+  - name: core
+    members:
+      - uav_ros_stack
+  - name: firmware
+    members:
+      - ardupilot
+  - name: simualation
+    members:
+      - rotors_simulator
+      - ardupilot_gazebo
+      - mav_comm
