@@ -137,7 +137,7 @@ groups:
   - name: firmware
     members:
       - ardupilot
-  - name: simualation
+  - name: simulation
     members:
       - rotors_simulator
       - ardupilot_gazebo
