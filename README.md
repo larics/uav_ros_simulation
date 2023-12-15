@@ -11,6 +11,7 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 | [ardupilot](https://github.com/larics/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) |
 | [rotors_simulator](https://github.com/larics/rotors_simulator) | N/A | N/A |
 | [mav_comm](https://github.com/larics/mav_comm) | N/A | N/A |
+| [larics_gazebo_worlds](https://github.com/larics/larics_gazebo_worlds) | N/A | N/A |
 
 
 ## Installation
