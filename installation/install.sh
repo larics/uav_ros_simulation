@@ -24,6 +24,9 @@ fi
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
+BINARY=$1
+[ -z "$BINARY" ] && BINARY=false
+
 # Check if rotors-gazebo is already installed via apt
 sudo apt-get -y install dpkg
 PACKAGE=ros-$ROS_DISTRO-rotors-gazebo
@@ -64,32 +67,30 @@ bash $MY_PATH/dependencies/gitman.sh
 gitman install --force
 
 # Install uav_ros_stack
-
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
 
-# Install ardupilot
+# Remove uav_ros_stack if installing via binary
+[ "$BINARY" = "true"] && gitman uninstall uav_ros_stack
 
+# Install ardupilot
 bash $MY_PATH/dependencies/ardupilot_dep.sh
 bash $MY_PATH/../firmware/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
 
 SNAME=$( echo "$SHELL" | grep -Eo '[^/]+/?$' )
 BASHRC=~/.$(echo $SNAME)rc
 
-distro=`lsb_release -r | awk '{ print $2 }'`
-[ "$distro" = "18.04" ] && ROS_DISTRO="melodic"
-[ "$distro" = "20.04" ] && ROS_DISTRO="noetic"
-
 # Add Ardupilot exports to bashrc
-
 num=`cat $BASHRC | grep "/ardupilot/Tools/autotest" | wc -l`
 if [ "$num" -lt "1" ]; then
 
   TEMP=`( cd "$MY_PATH/../firmware/ardupilot/Tools/autotest" && pwd )`
 
   echo "Adding Ardupilot source to $BASHRC"
-  echo "# Ardupilot exports
+  echo "\
+# Ardupilot exports
 export PATH=\$PATH:$TEMP
-export PATH=/usr/lib/ccache:\$PATH" >> $BASHRC
+export PATH=/usr/lib/ccache:\$PATH
+" >> $BASHRC
 fi
 
 ## | ------------- add Gazebo sourcing to .bashrc ------------- |
@@ -124,7 +125,6 @@ then
 fi
 
 ## | ------------- Build Ardupilot firmware ------------- |
-
 export PATH="/usr/lib/ccache:$PATH"
 export PATH="/opt/gcc-arm-none-eabi-6-2017-q2-update/bin:$PATH"
 cd $MY_PATH/../firmware/ardupilot
