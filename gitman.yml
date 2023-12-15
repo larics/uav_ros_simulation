@@ -1,8 +1,8 @@
 location: .gitman
 sources:
-  - repo: https://github.com/larics/ardupilot
+  - repo: git@github.com:larics/ardupilot
     name: ardupilot
-    rev: Copter-Larics-4.3
+    rev: Copter-Larics-4.4.3
     type: git
     params:
     sparse_paths:
@@ -12,7 +12,7 @@ sources:
     scripts:
       - git submodule update --init --recursive
       - rm -rf build
-  - repo: https://github.com/larics/ardupilot_gazebo
+  - repo: git@github.com:larics/ardupilot_gazebo
     name: ardupilot_gazebo
     rev: larics-master
     type: git
@@ -23,7 +23,7 @@ sources:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/larics/mav_comm
+  - repo: git@github.com:larics/mav_comm
     name: mav_comm
     rev: larics_master
     type: git
@@ -34,7 +34,7 @@ sources:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/larics/rotors_simulator
+  - repo: git@github.com:larics/rotors_simulator
     name: rotors_simulator
     rev: larics_noetic_master
     type: git
@@ -45,7 +45,7 @@ sources:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/larics/uav_ros_stack
+  - repo: git@github.com:larics/uav_ros_stack
     name: uav_ros_stack
     rev: main
     type: git
@@ -57,9 +57,9 @@ sources:
     scripts:
       - gitman install
 sources_locked:
-  - repo: https://github.com/larics/ardupilot
+  - repo: git@github.com:larics/ardupilot
     name: ardupilot
-    rev: 049074440866055912ca4d6b575eb482b2021b8b
+    rev: 75e173047c22de3deeb3202312d16da6a7a32c51
     type: git
     params:
     sparse_paths:
@@ -69,7 +69,7 @@ sources_locked:
     scripts:
       - git submodule update --init --recursive
       - rm -rf build
-  - repo: https://github.com/larics/ardupilot_gazebo
+  - repo: git@github.com:larics/ardupilot_gazebo
     name: ardupilot_gazebo
     rev: 676dae07131cf9d1a066ee4e23eb20e72e091325
     type: git
@@ -102,9 +102,9 @@ sources_locked:
       -
     scripts:
       - git submodule update --init --recursive
-  - repo: https://github.com/larics/uav_ros_stack
+  - repo: git@github.com:larics/uav_ros_stack
     name: uav_ros_stack
-    rev: 579ee5f0743f4c85ae29379363879f9514d5cf43
+    rev: 9c11d2cabd1ff7b7b2a81681397baa58a9ad1b0d
     type: git
     params:
     sparse_paths:
