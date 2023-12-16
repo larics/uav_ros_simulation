@@ -69,9 +69,6 @@ gitman install --force
 # Install uav_ros_stack
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
 
-# Remove uav_ros_stack if installing via binary
-[ "$BINARY" = "true"] && gitman uninstall uav_ros_stack
-
 # Install ardupilot
 bash $MY_PATH/dependencies/ardupilot_dep.sh
 bash $MY_PATH/../firmware/ardupilot/Tools/environment_install/install-prereqs-ubuntu.sh -y
