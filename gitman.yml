@@ -60,7 +60,7 @@ sources:
       - source: ''
         target: ros_packages/uav_ros_stack
     scripts:
-      - gitman install
+      - gitman install core
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
     rev: master
@@ -134,7 +134,7 @@ sources_locked:
       - source: ''
         target: ros_packages/uav_ros_stack
     scripts:
-      - gitman install
+      - gitman install core
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
     rev: 0bf9f5b1bf34432e317a54d37bb96a8a941917cf
@@ -146,7 +146,7 @@ sources_locked:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - gitman install core
+      - gitman install
 groups:
   - name: core
     members:
