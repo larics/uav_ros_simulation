@@ -146,7 +146,7 @@ sources_locked:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - gitman install
+      - gitman install core
 groups:
   - name: core
     members:
