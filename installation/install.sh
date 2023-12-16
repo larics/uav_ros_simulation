@@ -124,3 +124,6 @@ export PATH="/opt/gcc-arm-none-eabi-6-2017-q2-update/bin:$PATH"
 cd $MY_PATH/../firmware/ardupilot
 modules/waf/waf-light configure --board sitl                    
 modules/waf/waf-light build --target bin/arducopter
+
+echo "Uninstalling enum34"
+res=$(pip uninstall -y enum34)
