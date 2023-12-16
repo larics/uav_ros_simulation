@@ -24,9 +24,6 @@ fi
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
-BINARY=$1
-[ -z "$BINARY" ] && BINARY=false
-
 # Check if rotors-gazebo is already installed via apt
 sudo apt-get -y install dpkg
 PACKAGE=ros-$ROS_DISTRO-rotors-gazebo

@@ -21,17 +21,15 @@ MY_PATH=`( cd "$MY_PATH" && pwd )`
 cd "$MY_PATH"
 
 WORKSPACE_NAME=uav_ws
-BINARY=false
 while true; do
   case "$1" in
   --workspace ) WORKSPACE_NAME=$2; shift 2 ;;
-  --binary ) BINARY=true; shift ;;
   * ) break ;;
   esac
 done
 
 # Install uav_ros_simulation
-bash $MY_PATH/install.sh $BINARY
+bash $MY_PATH/install.sh
 
 # Setup catkin workspace
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/workspace_setup.sh $WORKSPACE_NAME
