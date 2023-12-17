@@ -138,5 +138,9 @@ cd $MY_PATH/../firmware/ardupilot
 modules/waf/waf-light configure --board sitl                    
 modules/waf/waf-light build --target bin/arducopter
 
+# Packages not needed for simulation
 echo "Uninstalling enum34"
 res=$(pip uninstall -y enum34)
+
+echo "Installing empy"
+res=$(pip install empy==3.3.4)
