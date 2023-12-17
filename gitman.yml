@@ -72,7 +72,7 @@ sources:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - 
+      -
 sources_locked:
   - repo: git@github.com:larics/ardupilot
     name: ardupilot
@@ -125,7 +125,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: git@github.com:larics/uav_ros_stack
     name: uav_ros_stack
-    rev: fd58e3347fb50f5577d96b6c3b2bcf115c9ee78f
+    rev: 26d25d858ee0a8b0aedf00d11b5a4cae5e9556fc
     type: git
     params:
     sparse_paths:
@@ -146,7 +146,7 @@ sources_locked:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - 
+      -
 groups:
   - name: core
     members:
