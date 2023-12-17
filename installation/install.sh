@@ -71,7 +71,7 @@ bash $MY_PATH/dependencies/gitman.sh
 ## | ---------------- install gitman submodules --------------- |
 
 gitman install --force -v
-gitman install $WHICH_STACK
+gitman install --force -v $WHICH_STACK 
 
 # Install uav_ros_stack
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
