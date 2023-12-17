@@ -24,6 +24,15 @@ fi
 MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
+# Check if we're installing uav_ros_stackk full (stack) or only partial (stack_sparse)
+WHICH_STACK="stack"
+while true; do
+  case "$1" in
+  --sparse ) WHICH_STACK="stack_sparse"; shift ;;
+  * ) break ;;
+  esac
+done
+
 # Check if rotors-gazebo is already installed via apt
 sudo apt-get -y install dpkg
 PACKAGE=ros-$ROS_DISTRO-rotors-gazebo
@@ -62,6 +71,7 @@ bash $MY_PATH/dependencies/gitman.sh
 ## | ---------------- install gitman submodules --------------- |
 
 gitman install --force -v
+gitman install $WHICH_STACK
 
 # Install uav_ros_stack
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh

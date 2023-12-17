@@ -61,6 +61,19 @@ sources:
         target: ros_packages/uav_ros_stack
     scripts:
       - gitman install core
+  - repo: git@github.com:larics/uav_ros_stack
+    name: uav_ros_stack_sparse
+    rev: main
+    type: git
+    params:
+    sparse_paths:
+      - miscellaneous/*
+      - installation/*
+    links:
+      - source: ''
+        target: ros_packages/uav_ros_stack
+    scripts:
+      - rm -rf .git
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
     rev: master
@@ -147,16 +160,30 @@ sources_locked:
         target: ros_packages/larics_gazebo_worlds
     scripts:
       -
+  - repo: git@github.com:larics/uav_ros_stack
+    name: uav_ros_stack_sparse
+    rev: 403b08ba0420df68846a2af9ac56ef5c5c904b54
+    type: git
+    params:
+    sparse_paths:
+      - miscellaneous/*
+      - installation/*
+    links:
+      - source: ''
+        target: ros_packages/uav_ros_stack
+    scripts:
+      - rm -rf .git
 groups:
-  - name: core
+  - name: stack
     members:
       - uav_ros_stack
-  - name: firmware
+  - name: stack_sparse
     members:
-      - ardupilot
+      - uav_ros_stack_sparse
   - name: simulation
     members:
       - rotors_simulator
       - ardupilot_gazebo
       - mav_comm
-default_group: ''
+      - ardupilot
+default_group: 'simulation'
