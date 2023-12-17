@@ -1,0 +1,52 @@
+FROM lmark1/uav_ros_stack:focal-bin-0.0.1
+
+# https://blog.alexellis.io/mutli-stage-docker-builds/ - Neat!
+FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
+
+# Use ARG - persists only during docker build
+# https://github.com/moby/moby/issues/4032#issuecomment-192327844
+ARG CATKIN_WORKSPACE=sim_ws
+ARG HOME=/root
+ARG USER=root
+ENV DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Install all the things to stop docker build from breaking
+RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
+    apt-get update && apt-get install -q -y \
+    git \
+    sudo \
+    lsb-release \
+    gnupg2 \
+    apt-utils \
+    dialog \
+    curl \
+    vim \
+    tzdata \
+    openssh-client \
+    vim \
+    git \
+    bash-completion && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+# download public key for github.com
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Install uav_ros_simulation and setup catkin workspace
+WORKDIR $HOME
+COPY --from=0 $HOME/uav_ws $HOME/uav_ws
+
+RUN --mount=type=ssh git clone git@github.com:larics/uav_ros_simulation.git && \
+  ./uav_ros_simulation/installation/install_and_setup_workspace.sh --workspace $CATKIN_WORKSPACE --sparse && \
+  rm -rf /root/.gitcache && \
+
+# Add souring
+RUN echo 'source '"$HOME"'/uav_ws/install/setup.bash' >> $HOME/.bashrc && \
+  echo 'export ROS_PACKAGE_PATH='"$HOME/$CATKIN_WORKSPACE"'/install/share:$ROS_PACKAGE_PATH' >> $HOME/.bashrc
+
+# Build catkin workspace
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
+RUN catkin build --limit-status-rate 0.2
+ 
+# Prepare for startup
+WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying
