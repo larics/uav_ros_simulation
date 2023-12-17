@@ -72,7 +72,7 @@ sources:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - gitman install
+      - 
 sources_locked:
   - repo: git@github.com:larics/ardupilot
     name: ardupilot
@@ -146,7 +146,7 @@ sources_locked:
       - source: ''
         target: ros_packages/larics_gazebo_worlds
     scripts:
-      - gitman install
+      - 
 groups:
   - name: core
     members:
