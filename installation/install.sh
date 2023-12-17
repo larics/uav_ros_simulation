@@ -70,11 +70,14 @@ bash $MY_PATH/dependencies/gitman.sh
 
 ## | ---------------- install gitman submodules --------------- |
 
-gitman install --force -v
-gitman install --force -v $WHICH_STACK 
+gitman install --force -v stack
 
 # Install uav_ros_stack
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/install.sh
+
+gitman uninstall
+gitman install --force -v $WHICH_STACK
+gitman install --force -v simulation
 
 # Install ardupilot
 bash $MY_PATH/dependencies/ardupilot_dep.sh
