@@ -144,3 +144,6 @@ res=$(pip uninstall -y enum34)
 
 echo "Installing empy"
 res=$(pip install empy==3.3.4)
+
+echo "Installing mavproxy==1.8.55"
+res=$(pip install mavproxy==1.8.55)
