@@ -38,7 +38,7 @@ COPY --from=0 $HOME/uav_ws $HOME/uav_ws
 
 RUN --mount=type=ssh git clone git@github.com:larics/uav_ros_simulation.git && \
   ./uav_ros_simulation/installation/install_and_setup_workspace.sh --workspace $CATKIN_WORKSPACE --sparse && \
-  rm -rf /root/.gitcache && \
+  rm -rf /root/.gitcache
 
 # Add souring
 RUN echo 'source '"$HOME"'/uav_ws/install/setup.bash' >> $HOME/.bashrc && \
