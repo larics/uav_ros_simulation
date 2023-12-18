@@ -46,7 +46,8 @@ RUN --mount=type=ssh git clone git@github.com:larics/uav_ros_simulation.git && \
 
 # Build catkin workspace
 WORKDIR $HOME/$CATKIN_WORKSPACE/src
-RUN bash -c 'source '"$HOME"'/sim_ws/devel/setup.bash; source '"$HOME"'/uav_ws/install/setup.bash; catkin build --limit-status-rate 0.2'
+RUN catkin config --extend /root/uav_ws/install && \
+  bash -c 'source '"$HOME"'/uav_ws/install/setup.bash; catkin build --limit-status-rate 0.2'
  
 # Prepare for startup
 WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying
