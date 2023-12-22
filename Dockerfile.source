@@ -3,9 +3,10 @@ FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
 # Use ARG - persists only during docker build
 # https://github.com/moby/moby/issues/4032#issuecomment-192327844
 ARG CATKIN_WORKSPACE=uav_ws
-ARG DEBIAN_FRONTEND=noninteractive
 ARG HOME=/root
 ARG USER=root
+ENV DEBIAN_FRONTEND=noninteractive
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Install all the things to stop docker build from breaking
 RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
@@ -21,10 +22,13 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
     keyboard-configuration && \
     dpkg-reconfigure --frontend noninteractive tzdata 
 
+# download public key for github.com
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
 # Install uav_ros_simulation and setup catkin workspace
 WORKDIR $HOME
-RUN git clone https://github.com/larics/uav_ros_simulation.git
-RUN ./uav_ros_simulation/installation/install_and_setup_workspace.sh $CATKIN_WORKSPACE
+RUN --mount=type=ssh git clone git@github.com:larics/uav_ros_simulation.git
+RUN --mount=type=ssh ./uav_ros_simulation/installation/install_and_setup_workspace.sh $CATKIN_WORKSPACE
 
 # Build catkin workspace
 WORKDIR $HOME/$CATKIN_WORKSPACE/src

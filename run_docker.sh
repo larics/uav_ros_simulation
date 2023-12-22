@@ -9,7 +9,7 @@ echo "Running Docker Container"
 CONTAINER_NAME=uav_ros_simulation
 
 # Get distro of the built image
-distro="focal"
+distro="focal-bin-0.0.1"
 run_args=""
 
 for (( i=1; i<=$#; i++));
@@ -64,5 +64,5 @@ docker run \
   --env DISPLAY=$DISPLAY \
   --env TERM=xterm-256color \
   --name $full_container_name \
-  lmark1/uav_ros_simulation:$distro \
+  uav_ros_simulation:focal-bin-0.0.1 \
   /bin/bash
