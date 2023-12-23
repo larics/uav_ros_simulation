@@ -66,8 +66,9 @@ jobs:
           file: Dockerfile.binary
           push: true
           tags: lmark1/uav_ros_simulation:${{ matrix.job.name }}-bin-${{ github.ref_name }}
+          ssh: |
+            $SSH_AUTH_SOCK
           build-args: |
             DISTRO=${{ matrix.job.distro }}
             VERSION=${{ github.ref_name }}
             BASE_IMAGE=${{ matrix.job.base_image }}
-            --ssh=default
