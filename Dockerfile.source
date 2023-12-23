@@ -6,6 +6,7 @@ ARG CATKIN_WORKSPACE=uav_ws
 ARG HOME=/root
 ARG USER=root
 ENV DEBIAN_FRONTEND=noninteractive
+ENV GITHUB_RUNNER=true
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 
 # Install all the things to stop docker build from breaking
