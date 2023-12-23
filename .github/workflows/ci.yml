@@ -106,6 +106,8 @@ jobs:
           file: Dockerfile.source
           push: true
           tags: lmark2/uav_ros_simulation_source:${{ matrix.distro }}
+          ssh: |
+            default=$SSH_AUTH_SOCK
           build-args: |
             DISTRO=${{ matrix.distro }} 
             --ssh=default
