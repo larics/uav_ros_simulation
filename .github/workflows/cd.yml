@@ -34,9 +34,9 @@ jobs:
           - name: focal-nogpu
             distro: focal
             base_image: ubuntu:focal
-          - name: bionic
-            distro: bionic
-            base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
+        # - name: bionic
+        #   distro: bionic
+        #   base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
     steps:
       -
         name: Set up QEMU
