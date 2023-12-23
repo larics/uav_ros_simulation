@@ -107,7 +107,7 @@ jobs:
           push: true
           tags: lmark2/uav_ros_simulation_source:${{ matrix.distro }}
           ssh: |
-            default=$SSH_AUTH_SOCK
+            default=/tmp/ssh_agent.sock
           build-args: |
             DISTRO=${{ matrix.distro }} 
             --ssh=default

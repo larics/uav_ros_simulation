@@ -67,7 +67,7 @@ jobs:
           push: true
           tags: lmark1/uav_ros_simulation:${{ matrix.job.name }}-bin-${{ github.ref_name }}
           ssh: |
-            default=$SSH_AUTH_SOCK
+            default=/tmp/ssh_agent.sock
           build-args: |
             DISTRO=${{ matrix.job.distro }}
             VERSION=${{ github.ref_name }}
