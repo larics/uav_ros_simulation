@@ -27,14 +27,17 @@ jobs:
     if: github.event_name != 'pull_request' 
     strategy:
       matrix:
-        distro: [bionic, focal]
+        job:
+          - name: focal
+            distro: focal
+            base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
+          - name: focal-nogpu
+            distro: focal
+            base_image: ubuntu:focal
+          - name: bionic
+            distro: bionic
+            base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
     steps:
-      - name: Setup SSH Keys and known_hosts
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -47,6 +50,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: Setup SSH Keys and known_hosts
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       -
         name: Build and push
         id: docker_build
@@ -56,9 +65,9 @@ jobs:
         with:
           file: Dockerfile.binary
           push: true
-          tags: lmark1/uav_ros_simulation:${{ matrix.distro }}-bin-${{ github.ref_name }}
+          tags: lmark1/uav_ros_simulation:${{ matrix.job.name }}-bin-${{ github.ref_name }}
           build-args: |
-            DISTRO=${{ matrix.distro }}
+            DISTRO=${{ matrix.job.distro }}
             VERSION=${{ github.ref_name }}
+            BASE_IMAGE=${{ matrix.job.base_image }}
             --ssh=default
-    

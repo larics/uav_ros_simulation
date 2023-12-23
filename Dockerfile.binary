@@ -1,11 +1,11 @@
 ARG VERSION=0.0.1
 ARG DISTRO=focal
+ARG BASE_IMAGE=nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
 
 FROM lmark1/uav_ros_stack:$DISTRO-bin-$VERSION
 
 # https://blog.alexellis.io/mutli-stage-docker-builds/ - Neat!
-# FROM nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
-FROM ubuntu:$DISTRO
+FROM $BASE_IMAGE
 
 # Use ARG - persists only during docker build
 # https://github.com/moby/moby/issues/4032#issuecomment-192327844

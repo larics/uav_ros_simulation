@@ -78,12 +78,6 @@ jobs:
     steps:
       # Use ssh key in private repository
       # https://www.webfactory.de/blog/use-ssh-key-for-private-repositories-in-github-actions
-      - name: Setup SSH Keys and known_hosts
-        env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: |
-          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -96,6 +90,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME2 }}
           password: ${{ secrets.DOCKERHUB_PASSWORD2 }}
+      - name: Setup SSH Keys and known_hosts
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: |
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
       -
         name: Build and push
         id: docker_build
