@@ -73,7 +73,7 @@ sources:
       - source: ''
         target: ros_packages/uav_ros_stack
     scripts:
-      - rm -rf .git
+      -
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
     rev: master
@@ -172,7 +172,7 @@ sources_locked:
       - source: ''
         target: ros_packages/uav_ros_stack
     scripts:
-      - rm -rf .git
+      -
 groups:
   - name: stack
     members:
@@ -186,4 +186,5 @@ groups:
       - ardupilot_gazebo
       - mav_comm
       - ardupilot
+      - larics_gazebo_worlds
 default_group: 'simulation'
