@@ -111,7 +111,7 @@ jobs:
         with:
           file: Dockerfile.source
           push: true
-          tags: lmark2/uav_ros_simulation_source:${{ matrix.distro }}
+          tags: lmark2/uav_ros_simulation_source:${{ matrix.job.name }}
           ssh: |
             default=/tmp/ssh_agent.sock
           build-args: |
