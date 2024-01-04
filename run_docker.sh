@@ -64,5 +64,5 @@ docker run \
   --env DISPLAY=$DISPLAY \
   --env TERM=xterm-256color \
   --name $full_container_name \
-  uav_ros_simulation:focal-bin-0.0.1 \
+  uav_ros_simulation:$distro \
   /bin/bash
