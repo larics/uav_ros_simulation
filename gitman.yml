@@ -150,7 +150,7 @@ sources_locked:
       - gitman install core
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
-    rev: 0bf9f5b1bf34432e317a54d37bb96a8a941917cf
+    rev: e89f89005487e593f74631c3ebbf653f27559ac5
     type: git
     params:
     sparse_paths:
