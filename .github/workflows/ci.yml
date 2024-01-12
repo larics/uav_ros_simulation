@@ -79,8 +79,8 @@ jobs:
             base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
           - name: focal-nogpu
             base_image: ubuntu:focal
-          - name: bionic
-            base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
+            # - name: bionic
+            #   base_image: nvidia/opengl:1.2-glvnd-runtime-ubuntu18.04
     steps:
       # Use ssh key in private repository
       # https://www.webfactory.de/blog/use-ssh-key-for-private-repositories-in-github-actions
