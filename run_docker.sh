@@ -9,7 +9,7 @@ echo "Running Docker Container"
 CONTAINER_NAME=uav_ros_simulation
 
 # Get distro of the built image
-distro="focal-bin-0.0.1"
+distro="focal-bin-0.1.0"
 run_args=""
 gpu_enabled=""
 
