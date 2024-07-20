@@ -1,6 +1,11 @@
 Changelog
 =========
 
+v0.2.0 (20-07-2024)
+--------------
+- [uav_ros_stack] Update to version 0.2.0
+- [ardupilot_gazebo] Minor fixes
+
 v0.1.0 (02-05-2024)
 --------------
 - [uav_ros_stack] Update to version 0.1.0
