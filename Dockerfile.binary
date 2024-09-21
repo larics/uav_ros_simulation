@@ -1,4 +1,4 @@
-ARG VERSION=0.1.0
+ARG VERSION=0.2.1
 ARG DISTRO=focal
 ARG BASE_IMAGE=nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
 

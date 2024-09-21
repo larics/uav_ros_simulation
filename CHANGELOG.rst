@@ -1,6 +1,9 @@
 Changelog
 =========
 
+v0.2.1 (21-09-2024)
+- [uav_ros_stack] Update to version 0.2.1
+
 v0.2.0 (20-07-2024)
 --------------
 - [uav_ros_stack] Update to version 0.2.0
