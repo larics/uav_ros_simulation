@@ -65,4 +65,4 @@ RUN echo "source $HOME/$CATKIN_WORKSPACE/devel/setup.bash" >> $HOME/.bashrc && \
   echo 'export ROS_PACKAGE_PATH='"$HOME"'/uav_ws/install/share:$ROS_PACKAGE_PATH' >> $HOME/.bashrc
  
 # Prepare for startup
-WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying
+WORKDIR $HOME/$CATKIN_WORKSPACE/src

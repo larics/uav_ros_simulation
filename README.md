@@ -15,71 +15,33 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 
 ## Installation
 
-**TODO: These instructions need updating**
-
-### Beginner
-
-Follow these steps for a quick and easy start.
-
+The uav_ros_simulation can be started only with docker. Find out how to work in a Docker environment at [HOWTO.md - Docker Commands](HOWTO.md). 
+Docker can be installed with:
 ```bash
-git clone https://github.com/larics/uav_ros_simulation
-cd uav_ros_simulation/installation
-./install_and_setup_workspace.sh
-source ~/.bashrc
+./installation/dependencies/docker.sh
 ```
-
-### Advanced
-
-Follow these installation steps if you have a catkin workspace already set up.
-
-``` bash
-# Navigate to src folder of the catkin workspace
-cd /path/to/catkin_ws/src
-
-# Install uav_ros_stack
-git clone https://github.com/larics/uav_ros_simulation
-cd uav_ros_simulation
-./installation/install.sh
-
-# Export GAZEBO_PLUGIN_PATH
-./installation/gazebo/setup_gazebo.sh /path/to/catkin_ws/build
-
-# Build catkin workspace
-catkin build
-
-# Source ~/.basrhc or ~/.zshrc
-source ~/.bashrc
-```
+Follow these steps for a quick and easy start.
+1.  Pull the docker image. 
+Prebuilt images for ```uav_ros_simulation``` found at [DockerHub lmark1/uav_ros_simulation](https://hub.docker.com/repository/docker/lmark1/uav_ros_simulation).
+    ```bash 
+    docker pull lmark1/uav_ros_simulation:focal-bin-0.2.1 
+    ```
+2. ```bash 
+    ./docker_build.sh 
+    ```
+3. ```bash 
+    ./docker_run.sh 
+    ```
 
 ## Simulation Startup
 
 UAV simulations are launched as tmuxinator sessions as follows.
 ```bash
-cd uav_ros_simulation/startup/kopterworx_one_flying
+cd ~/uav_ros_simulation/startup/kopterworx_one_flying
 ./start.sh
 ```
 
 To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).
-
-## Flight Stack Development
-
-Ready to start adding new and exciting features to this flight stack ?! Please check out [DEVELOPMENT.md](DEVELOPMENT.md) to find out how!
-
-## Fly with Docker
-
-Try out a Docker image with the following commands:
-```bash
-# Install Docker
-./installation/dependencies/docker.sh
-
-# Run the newest uav_ros_simulation Noetic image
-./run_docker.sh
-```
-
-Find out how to work in a Docker environment at [HOWTO.md - Docker Commands](HOWTO.md).
-Prebuilt images for ```uav_ros_simulation``` found at [DockerHub lmark1/uav_ros_simulation](https://hub.docker.com/repository/docker/lmark1/uav_ros_simulation).
-
-## Troubleshooting
 
 ### Getting new changes from Github
 

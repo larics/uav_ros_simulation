@@ -9,17 +9,12 @@ echo "Running Docker Container"
 CONTAINER_NAME=uav_ros_simulation
 
 # Get distro of the built image
-distro="focal-bin-0.1.0"
+distro=$(docker images $CONTAINER_NAME | tail -n1 | awk '{print $2}')
 run_args=""
-gpu_enabled=""
 
 for (( i=1; i<=$#; i++));
 do
   param="${!i}"
-
-  if [ "$param" == "--enable-gpu" ]; then
-    gpu_enabled="--gpus all"
-  fi
 
   if [ "$param" == "--bionic" ]; then
     distro="bionic"
@@ -40,13 +35,18 @@ do
 
 done
 
+# Check if using GPU
+gpu_enabled="--gpus all"
+if [ "$distro" == "focal-nogpu" ]; then
+  gpu_enabled=""
+fi
 run_args="$gpu_enabled $run_args"
 
 echo "Running in $distro"
 
 # Check if there is an already running container with the same distro
-full_container_name="${CONTAINER_NAME}_${distro}_new"
-running_container="$(docker container ls --all | grep $full_container_name)"
+full_container_name="${CONTAINER_NAME}_${distro}"
+running_container="$(docker container ls -al | grep $full_container_name)"
 if [ -z "$running_container" ]; then
   echo "Running $full_container_name for the first time!"
 else
@@ -66,13 +66,17 @@ docker run \
   -it \
   --network host \
   --privileged \
+  --volume /dev:/dev \
+  --volume /tmp/.x11-unix:/tmp/.x11-unix \
+  --volume $HOME/bags:/root/bags \
+  --volume $HOME/rosbag_default:/root/rosbag_default \
   --volume ~/.ssh/ssh_auth_sock:/ssh-agent \
-  --env SSH_AUTH_SOCK=/ssh-agent \
   --volume=$XSOCK:$XSOCK:rw \
   --volume=$XAUTH:$XAUTH:rw \
+  --env SSH_AUTH_SOCK=/ssh-agent \
   --env="XAUTHORITY=${XAUTH}" \
   --env DISPLAY=$DISPLAY \
   --env TERM=xterm-256color \
   --name $full_container_name \
-  lmark1/uav_ros_simulation:$distro \
+  uav_ros_simulation:$distro \
   /bin/bash
