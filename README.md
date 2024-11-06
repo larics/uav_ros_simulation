@@ -37,8 +37,8 @@ Prebuilt images for ```uav_ros_simulation``` found at [DockerHub lmark1/uav_ros_
 
 UAV simulations are launched as tmuxinator sessions as follows.
 ```bash
-cd ~/uav_ros_simulation/startup/kopterworx_one_flying
-./start.sh
+roscd uav_ros_simulation
+./startup/kopterworx_one_flying/start.sh
 ```
 
 To find out more about navigating the simulation environment please read [HOWTO.md](HOWTO.md).

@@ -52,4 +52,4 @@ docker build \
     --build-arg ROS_IP=$ROS_IP \
     -f $DOCKERFILE \
     --ssh default \
-    -t $IMAGE_NAME:$distro .
+    -t $IMAGE_NAME:$ros_distro .
