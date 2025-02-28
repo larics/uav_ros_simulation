@@ -1,0 +1,31 @@
+name: single_kopter
+root: ./
+startup_window: roscore
+pre_window: export UAV_NAMESPACE=red
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot1"; waitForRos;
+          roslaunch ardupilot_gazebo sim_vehicle.launch
+          enable_console:=false
+          additional_arguments:="--no-rebuild"
+        - waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch
+  - gazebo:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_control pid_carrot.launch
+        - rosrun ardupilot_gazebo automatic_takeoff.sh
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
+  - arm_ctl:
+      layout: tiled
+      panes:
+        - waitForRos; waitFor /red/joint_states; roslaunch uam_ros_ctl uam_arm_ctl.launch
