@@ -102,7 +102,7 @@ sources_locked:
       - rm -rf build
   - repo: git@github.com:larics/ardupilot_gazebo
     name: ardupilot_gazebo
-    rev: 86fcd644a30b9e411c9a38507d576437889b7c23
+    rev: af14ba21943f8b4da61480a69600b697bc30d61d
     type: git
     params:
     sparse_paths:
@@ -138,7 +138,7 @@ sources_locked:
       - git submodule update --init --recursive
   - repo: git@github.com:larics/uav_ros_stack
     name: uav_ros_stack
-    rev: bfa98eaae58daba69c9be98769b20e2b06a74a70
+    rev: 8ec9fd8b1798e348be2726875f61a22c388f18ec
     type: git
     params:
     sparse_paths:
@@ -150,7 +150,7 @@ sources_locked:
       - gitman install core
   - repo: git@github.com:larics/larics_gazebo_worlds.git
     name: larics_gazebo_worlds
-    rev: 0bf9f5b1bf34432e317a54d37bb96a8a941917cf
+    rev: e89f89005487e593f74631c3ebbf653f27559ac5
     type: git
     params:
     sparse_paths:
