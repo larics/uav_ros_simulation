@@ -1,0 +1,33 @@
+name: kopter_unity
+root: ./
+startup_window: roscore
+pre_window: |
+  export UAV_NAMESPACE=red
+  source unity_setup.sh
+windows:
+  - roscore:
+      layout: tiled
+      panes:
+        - roscore
+        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; 
+          roslaunch ardupilot_gazebo sim_vehicle.launch 
+          enable_console:=false
+          frame:="airsim-copter"
+          name:="kopter_unity"
+        - waitForRos; roslaunch ardupilot_gazebo mavros.launch
+  - unity:
+      layout: tiled
+      panes:
+        - |
+          ln -sf $(pwd)/custom_config/settings.json $HOME/Documents/AirSim/settings.json
+          sleep 10
+          Unity -projectPath $AIRSIM_PROJECT -executeMethod UnityEditor.EditorApplication.EnterPlaymode
+  - arm&takeof:
+      layout: tiled
+      panes:
+        - waitForRos; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - waitForRos; rosrun ardupilot_gazebo automatic_takeoff.sh 2 "mavros/global_position/local" false
+  - trajectory:
+      layout: tiled
+      panes:
+        - waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
