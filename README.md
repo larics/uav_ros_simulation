@@ -6,14 +6,16 @@ A collection of ROS packages for Gazebo simulations of Ardupilot / PX4 UAV platf
 
 | ROS Package                                                                               | 18.04  | 20.04|
 |-----------------------|---------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
-| [uav_ros_stack](https://github.com/larics/uav_ros_stack) | [![Melodic](https://github.com/larics/uav_ros_stack/workflows/Melodic/badge.svg)](https://github.com/larics/uav_ros_stack/actions) | [![Noetic](https://github.com/larics/uav_ros_stack/workflows/Noetic/badge.svg)](https://github.com/larics/uav_ros_stack/actions) |
 | [ardupilot_gazebo](https://github.com/larics/ardupilot_gazebo) |  [![Melodic](https://github.com/larics/ardupilot_gazebo/workflows/Melodic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) | [![Noetic](https://github.com/larics/ardupilot_gazebo/workflows/Noetic/badge.svg)](https://github.com/larics/ardupilot_gazebo/actions) |
 | [ardupilot](https://github.com/larics/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) | [![Build SemaphoreCI](https://semaphoreci.com/api/v1/ardupilot/ardupilot/branches/master/badge.svg)](https://semaphoreci.com/ardupilot/ardupilot) |
 | [rotors_simulator](https://github.com/larics/rotors_simulator) | N/A | N/A |
 | [mav_comm](https://github.com/larics/mav_comm) | N/A | N/A |
+| [larics_gazebo_worlds](https://github.com/larics/larics_gazebo_worlds) | N/A | N/A |
 
 
 ## Installation
+
+**TODO: These instructions need updating**
 
 ### Beginner
 

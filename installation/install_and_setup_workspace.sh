@@ -18,17 +18,20 @@ MY_PATH=`dirname "$0"`
 MY_PATH=`( cd "$MY_PATH" && pwd )`
 
 ## | --------- change to the directory of this script --------- |
-
 cd "$MY_PATH"
 
-if [ "$#" -ne 1 ]; then
-  WORKSPACE_NAME=uav_ws
-else
-  WORKSPACE_NAME=$1
-fi
+WORKSPACE_NAME=uav_ws
+SPARSE=""
+while true; do
+  case "$1" in
+  --workspace ) WORKSPACE_NAME=$2; shift 2 ;;
+  --sparse ) SPARSE="--sparse"; shift ;;
+  * ) break ;;
+  esac
+done
 
 # Install uav_ros_simulation
-bash $MY_PATH/install.sh
+bash $MY_PATH/install.sh $SPARSE
 
 # Setup catkin workspace
 bash $MY_PATH/../ros_packages/uav_ros_stack/installation/workspace_setup.sh $WORKSPACE_NAME

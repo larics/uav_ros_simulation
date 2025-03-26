@@ -15,12 +15,12 @@ windows:
   - gazebo:
       layout: tiled
       panes:
-        - waitForRos; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true
+        - waitForRos; bash -c "source /root/uam_ws/devel/setup.bash; roslaunch ardupilot_gazebo kopterworx.launch use_sim_time:=true enable_manipulator:=true"
   - arm&takeof:
       layout: tiled
       panes:
         - waitForRos; roslaunch uav_ros_control pid_carrot.launch
-        - rosrun ardupilot_gazebo automatic_takeoff.sh
+        - rosrun ardupilot_gazebo automatic_takeoff.sh 2
   - trajectory:
       layout: tiled
       panes:

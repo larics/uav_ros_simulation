@@ -1,0 +1,68 @@
+ARG VERSION=0.2.3
+ARG DISTRO=focal
+ARG BASE_IMAGE=nvidia/opengl:1.2-glvnd-runtime-ubuntu20.04
+
+FROM lmark1/uav_ros_stack:$DISTRO-bin-$VERSION
+
+# https://blog.alexellis.io/mutli-stage-docker-builds/ - Neat!
+FROM $BASE_IMAGE
+
+# Use ARG - persists only during docker build
+# https://github.com/moby/moby/issues/4032#issuecomment-192327844
+ARG CATKIN_WORKSPACE=sim_ws
+ARG HOME=/root
+ARG USER=root
+ENV DEBIAN_FRONTEND=noninteractive
+ENV GITHUB_RUNNER=true
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
+
+# Install all the things to stop docker build from breaking
+RUN ln -fs /usr/share/zoneinfo/Europe/Zagreb /etc/localtime && \
+    apt-get update && apt-get install -q -y \
+    git \
+    sudo \
+    lsb-release \
+    gnupg2 \
+    apt-utils \
+    dialog \
+    curl \
+    vim \
+    tzdata \
+    openssh-client \
+    vim \
+    git \
+    bash-completion && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+
+# download public key for github.com
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Install uav_ros_simulation and setup catkin workspace
+WORKDIR $HOME
+COPY --from=0 $HOME/uav_ws $HOME/uav_ws
+
+RUN --mount=type=ssh git clone git@github.com:larics/uav_ros_simulation.git && \
+  ./uav_ros_simulation/installation/install_and_setup_workspace.sh --workspace $CATKIN_WORKSPACE --sparse
+
+# Build catkin workspace
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
+SHELL ["/bin/bash", "-c"]
+
+# Add sourcing
+RUN echo "source $HOME/uav_ws/install/setup.bash" >> $HOME/.bashrc && \
+  # 1) remove uav_ws sourcing, need to add it after..
+  sed -i "s|source $HOME/$CATKIN_WORKSPACE/devel/setup.bash||g" $HOME/.bashrc
+
+# Build
+RUN source /root/.bashrc && \
+  catkin clean --yes && \
+  catkin config --extend /root/uav_ws/install && \
+  catkin build --limit-status-rate 0.2
+
+# 2) .. add source sim_ws NOW
+RUN echo "source $HOME/$CATKIN_WORKSPACE/devel/setup.bash" >> $HOME/.bashrc && \
+  # 3) Expose uav_ws packages
+  echo 'export ROS_PACKAGE_PATH='"$HOME"'/uav_ws/install/share:$ROS_PACKAGE_PATH' >> $HOME/.bashrc
+ 
+# Prepare for startup
+WORKDIR $HOME/uav_ros_simulation/startup/kopterworx_one_flying

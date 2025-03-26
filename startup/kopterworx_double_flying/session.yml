@@ -7,8 +7,8 @@ windows:
       layout: tiled
       panes:
         - roscore
-        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=1
-        - export SITL_RITW_TERMINAL="tmux new-window -n:ardupilot2"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=2
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot1"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=1
+        - export SITL_RITW_TERMINAL="tmux new-window -d -n:ardupilot2"; waitForRos; roslaunch ardupilot_gazebo sim_vehicle.launch enable_console:=false id:=2
         - export UAV_NAMESPACE=red; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch
         - export UAV_NAMESPACE=blue; waitForRos; rosparam set use_sim_time true; roslaunch ardupilot_gazebo mavros.launch fcu_url:="udp://:14560@localhost:14565" tgt_system:=2
   - gazebo:
@@ -20,12 +20,12 @@ windows:
   - arm&takeof:
       layout: tiled
       panes:
-        - export UAV_NAMESPACE=red; waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_control pid_carrot.launch
         - export UAV_NAMESPACE=red; rosrun ardupilot_gazebo automatic_takeoff.sh 1.75
-        - export UAV_NAMESPACE=blue; waitForRos; waitForOdometry; roslaunch uav_ros_control pid_carrot.launch manual_takeoff:=false
+        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_control pid_carrot.launch
         - export UAV_NAMESPACE=blue; rosrun ardupilot_gazebo automatic_takeoff.sh 2.5
   - trajectory:
       layout: tiled
       panes:
-        - export UAV_NAMESPACE=red; waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
-        - export UAV_NAMESPACE=blue; waitForRos; waitForOdometry; roslaunch uav_ros_tracker topp_tracker.launch tracker_config:=./custom_config/topp_config_custom.yaml
+        - export UAV_NAMESPACE=red; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
+        - export UAV_NAMESPACE=blue; waitForRos; roslaunch uav_ros_tracker topp_tracker.launch
