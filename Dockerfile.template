@@ -1,0 +1,21 @@
+FROM lmark2/uav_ros_simulation_source:focal
+
+ARG HOME=/root
+ARG CATKIN_WORKSPACE=sim_ws
+ARG USER=root
+
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
+RUN apt-get install openssh-client git
+RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+# Build catkin workspace
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
+
+# Build the Catkin workspace
+RUN catkin build --limit-status-rate 0.2
+
+ARG ROS_HOSTNAME=localhost.local
+ARG ROS_MASTER_URI=http://localhost.local:11311
+ARG ROS_IP=localhost.local
+
+WORKDIR $HOME/$CATKIN_WORKSPACE/src
